@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { DataService } from './data.service'
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,9 +19,10 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
