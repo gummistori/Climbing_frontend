@@ -1,13 +1,21 @@
 <app-nav></app-nav>
 
-<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid banner-cont">
+  <div class="container no-padd">
+    <div class="banner banner-subcont vignette" *ngFor="let post of (articles | async) | slice:0:1">
+      <a title="{{post.title}}" href="/grein/{{post.id}}">
+      <img src="http://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
+      <h2><span>{{post.title}}</span><em class="banner-em">2017-12-03</em></h2>
+      </a>
+    </div>
+  </div>
+</div>
 
-<div class="container">
+<div class="container banner-cont no-padd">
   <div class="row sidelines">
 
-    <div [ngClass]="{'col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont':i>0,
-                    'banner banner-subcont vignette': i == 0}" *ngFor="let post of (articles | async); let i = index;">
-      <a title="{{post.title}}" href="http://www.climbing.is/grein/{{post.id}}">
+    <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont" *ngFor="let post of (articles | async) | slice:1:5; let i = index;">
+      <a title="{{post.title}}" href="http://www.climbing.is/grein/{{post.id}}" >
         <img src="http://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
         <h4><span>{{post.title}}</span><em>2017-10-08</em></h4>
       </a>
@@ -17,5 +25,6 @@
 </div>
 
 <app-about></app-about>
-
+<app-banners></app-banners>
+<app-footer></app-footer>
 <router-outlet></router-outlet>

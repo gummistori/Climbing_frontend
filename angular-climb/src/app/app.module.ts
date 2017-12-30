@@ -12,13 +12,17 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DataService } from './data.service';
-import { AboutComponent } from './about/about.component'
+import { AboutComponent } from './about/about.component';
+import { BannersComponent } from './banners/banners.component';
+import { FooterComponent } from './footer/footer.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    AboutComponent
+    AboutComponent,
+    BannersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
