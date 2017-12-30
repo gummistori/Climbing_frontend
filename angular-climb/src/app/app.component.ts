@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Article } from './article';
+import { NgClass } from '@angular/common';
 
 
 @Component({
