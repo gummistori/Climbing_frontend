@@ -8,11 +8,13 @@
     <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont" *ngFor="let post of articles | async">
       <a title="{{post.title}}" href="http://www.climbing.is/grein/{{post.id}}">
         <img src="http://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
-        <h4><span>{{post.title}}</span> - <em>2017-10-08</em></h4>
+        <h4><span>{{post.title}}</span><em>2017-10-08</em></h4>
       </a>
     </div>
 
   </div>
 </div>
+
+<app-about></app-about>
 
 <router-outlet></router-outlet>
