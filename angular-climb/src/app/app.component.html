@@ -1,17 +1,18 @@
+<app-nav></app-nav>
+
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:left">
-  <img width="300" alt="Climbing Logo" src="http://climbing.is/img/teymid_v2.png">
+
+<div class="container">
+  <div class="row sidelines">
+
+    <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont" *ngFor="let post of articles | async">
+      <a title="{{post.title}}" href="http://www.climbing.is/grein/{{post.id}}">
+        <img src="http://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
+        <h4><span>{{post.title}}</span> - <em>2017-10-08</em></h4>
+      </a>
+    </div>
+
+  </div>
 </div>
-<h2>Angular version</h2>
-
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="http://www.climbing.is">Climbing</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="http://xmap.climbing.is/xmap/map.php">XMAP</a></h2>
-  </li>
-</ul>
-
 
 <router-outlet></router-outlet>

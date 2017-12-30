@@ -13,7 +13,7 @@ export interface Phone {
 
 @Injectable()
 export class DataService {
-  private phonesUrl = 'https://angular.strumpur.net/api.php';
+  private phonesUrl = 'http://new.climbing.is/getGreinar.php';
 
   constructor(@Inject(HttpClient) private http: HttpClient) { }
 

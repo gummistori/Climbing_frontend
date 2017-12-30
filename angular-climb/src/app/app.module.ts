@@ -1,3 +1,4 @@
+import { NavComponent } from './nav/nav.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +15,8 @@ import { DataService } from './data.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
