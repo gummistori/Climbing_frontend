@@ -1,2 +1,2 @@
 # Angular-Climb
-climbing.is in AngularJS
+climbing.is in Angular 5
