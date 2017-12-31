@@ -1,8 +1,35 @@
+<div class="container language-container">
+    <div class="language">
+        <a href="#"><i class="flag-icon flag-icon-gb"></i></a>
+        <a href="#" class="lang-active"><i class="flag-icon flag-icon-is"></i></a>
+    </div>
+</div>
+    
+    
+    <div class="container language-container">
+        <div class="language">
+            <a href="javascript:setCookie('www-cli', 'en', exp);" >
+                <i class="flag-icon flag-icon-gb"></i>
+            </a>
+            <a href="javascript:setCookie('www-cli', 'is', exp);" class="lang-active">
+                <i class="flag-icon flag-icon-is"></i>
+            </a>
+        </div>
+    </div>
+
+<style>
+    .logo-container{
+        position:relative;
+    }
+    .logo-cont{
+        position:absolute; left:0; z-index:9999;
+    }
+</style>
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="container logo-container" style="position:relative;">
     
-        <div class="logo-cont"><a class="logo" href="/forsida"><img src="http://www.climbing.is/img/teymid_v2.png"/></a></div>
+        <div class="logo-cont"><a class="logo" routerLink="/"><img src="http://www.climbing.is/img/teymid_v2.png"/></a></div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -16,10 +43,10 @@
         <div class="collapse navbar-collapse main-nav" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
             
-            <li class="active"><a href="#">Heim</a></li>
-            <li><a href="#">Greinar</a></li>
+            <li class="active"><a routerLink="/">Heim</a></li>
+            <li><a routerLink="/Articles">Greinar</a></li>
             <li>
-            <a href="#">
+            <a href="/About">
                 Um okkur
             </a>
             </li>
