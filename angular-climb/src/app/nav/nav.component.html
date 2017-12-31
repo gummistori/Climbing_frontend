@@ -43,10 +43,10 @@
         <div class="collapse navbar-collapse main-nav" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
             
-            <li class="active"><a routerLink="/">Heim</a></li>
-            <li><a routerLink="/Articles">Greinar</a></li>
-            <li>
-            <a href="/About">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Heim</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/Articles">Greinar</a></li>
+            <li [routerLinkActive]="['active']">
+            <a routerLink="/About">
                 Um okkur
             </a>
             </li>
