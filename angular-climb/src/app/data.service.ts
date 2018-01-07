@@ -29,7 +29,7 @@ export class DataService {
     return this.http.get<ArticleDetails>(this.ROOT_URL+'getGrein.php?id='+id)
       .pipe(
         tap(heroes => this.log(`fetched article`)),
-        catchError(this.handleError('getArticle', []))
+        catchError(this.handleError('getArticle', null))
       );
   }
 
