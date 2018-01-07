@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row sidelines">
   <!-- Myndir -->
-  	<div class="col-lg-4 col-md-4 col-xs-6 thumb vignette-xsmall" style="padding-left: 0px; padding-right: 0px;" *ngFor="let image of art.gallery">
+  	<div class="col-lg-4 col-md-4 col-xs-6 thumb vignette-xsmall" style="padding-left: 0px; padding-right: 0px;" *ngFor="let image of art?.gallery">
       <a class="thumbnail" title="{{image.description}}" href="http://www.climbing.is/safetest/stormynd.php/{{image.file}}" data-gallery style="border: 0px; margin: 0px; padding: 0px;">
         <img class="img-responsive" src="http://www.climbing.is/squarethumb.php/{{image.file}}" alt="{{description}}">
       </a>
