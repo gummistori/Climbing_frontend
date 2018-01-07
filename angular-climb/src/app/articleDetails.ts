@@ -1,7 +1,6 @@
 import { GalleryItem } from './galleryItem';
 
 export interface ArticleDetails {
-    id: number;
     fyrirsogn: string;
     fyrirsognEng: string;
     body: string;
