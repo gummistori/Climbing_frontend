@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ArticleComponent } from './article.component';
 import { GalleryComponent } from '../gallery/gallery.component';
+import { EpochDatePipe } from '../epoch-date.pipe';
 
 
 describe('ArticleComponent', () => {
@@ -14,7 +15,7 @@ describe('ArticleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule],
-      declarations: [ ArticleComponent, GalleryComponent ]
+      declarations: [ ArticleComponent, GalleryComponent, EpochDatePipe ]
     })
     .compileComponents();
   }));

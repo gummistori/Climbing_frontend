@@ -10,9 +10,16 @@ import { of } from 'rxjs/observable/of';
 import { Article } from './article';
 import { ArticleDetails } from './articleDetails';
 
+export interface Tag {
+  id: number;
+  name: string;
+  nameEnglish: string;
+  checked: boolean;
+}
+
 @Injectable()
 export class DataService {
-  readonly ROOT_URL = 'http://new.climbing.is/';
+  public readonly ROOT_URL = 'http://new.climbing.is/';
   private phonesUrl = 'http://new.climbing.is/getGreinar.php';
 
   constructor(@Inject(HttpClient) private http: HttpClient) { }
@@ -31,6 +38,14 @@ export class DataService {
         tap(heroes => this.log(`fetched article`)),
         catchError(this.handleError('getArticle', null))
       );
+  }
+
+  getTags(){
+    return this.http.get<Tag>(this.ROOT_URL+'getTags.php')
+    .pipe(
+      tap(heroes => this.log(`fetched tag`)),
+      catchError(this.handleError('getTag', null))
+    );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

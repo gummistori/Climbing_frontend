@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlesComponent } from './articles.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { EpochDatePipe } from '../epoch-date.pipe';
 
 
 describe('ArticlesComponent', () => {
@@ -10,8 +13,8 @@ describe('ArticlesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlesComponent ],
-      imports: [RouterTestingModule]
+      declarations: [ ArticlesComponent, EpochDatePipe ],
+      imports: [RouterTestingModule, FormsModule, HttpClientModule]
     })
     .compileComponents();
   }));
