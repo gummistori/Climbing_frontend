@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GalleryComponent implements OnInit {
 
-  @Input() art?: ArticleDetails;
+  @Input() art: ArticleDetails;
 
   constructor() { }
 
