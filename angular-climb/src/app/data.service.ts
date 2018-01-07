@@ -7,21 +7,20 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
-export interface Phone {
-  phoneNumber : string;
-};
+import { Article } from './article';
 
 @Injectable()
 export class DataService {
+  readonly ROOT_URL = 'http://new.climbing.is/';
   private phonesUrl = 'http://new.climbing.is/getGreinar.php';
 
   constructor(@Inject(HttpClient) private http: HttpClient) { }
 
-  getPhones (): Observable<Phone[]> {
-    return this.http.get<Phone[]>(this.phonesUrl)
+  getArticles():Observable<Article[]>{
+    return this.http.get<Article[]>(this.ROOT_URL+'getGreinar.php')
       .pipe(
-        tap(heroes => this.log(`fetched phones`)),
-        catchError(this.handleError('getPhones', []))
+        tap(heroes => this.log(`fetched article`)),
+        catchError(this.handleError('getArticles', []))
       );
   }
 
