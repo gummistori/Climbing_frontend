@@ -16,7 +16,9 @@ import { AboutComponent } from './about/about.component';
 import { BannersComponent } from './banners/banners.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { FrontComponent } from './front/front.component'
+import { FrontComponent } from './front/front.component';
+import { ArticleComponent } from './article/article.component';
+import { GalleryComponent } from './gallery/gallery.component'
 
 @NgModule({
   declarations: [
@@ -26,14 +28,18 @@ import { FrontComponent } from './front/front.component'
     BannersComponent,
     FooterComponent,
     ArticlesComponent,
-    FrontComponent
+    FrontComponent,
+    ArticleComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', component: FrontComponent}
-      , {path: 'Articles', component: ArticlesComponent}
+      { path: '', component: FrontComponent}
+      , { path: 'Articles/:id', component: ArticleComponent}
+      , { path: 'Articles', component: ArticlesComponent}
       , { path: 'About', component: AboutComponent}
+      , { path: '**', component: FrontComponent} // change this to 404
     ]),
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     HttpClientModule
