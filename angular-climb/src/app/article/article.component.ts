@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { ArticleDetails, getRandomImage } from '../articleDetails';
 
+//declare var swMap: any;
+
+//import 'http://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -28,6 +32,12 @@ export class ArticleComponent implements OnInit {
       });
       // In a real app: dispatch action to load the details here.
    });
+
+   //this.map();
+  }
+
+  map(){
+    //new InitMap();
   }
 
 }
