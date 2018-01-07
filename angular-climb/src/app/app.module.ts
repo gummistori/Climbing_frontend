@@ -19,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { FrontComponent } from './front/front.component';
 import { ArticleComponent } from './article/article.component';
-import { GalleryComponent } from './gallery/gallery.component'
+import { GalleryComponent } from './gallery/gallery.component';
+import { EpochDatePipe } from './epoch-date.pipe'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { GalleryComponent } from './gallery/gallery.component'
     ArticlesComponent,
     FrontComponent,
     ArticleComponent,
-    GalleryComponent
+    GalleryComponent,
+    EpochDatePipe
   ],
   imports: [
     BrowserModule,

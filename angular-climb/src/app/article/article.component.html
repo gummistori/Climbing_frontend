@@ -5,10 +5,10 @@
     <!-- REM Gummi
     <a title="Aukamyndir úr ölpunum" href="http://climbing.is/safetest/magni.php/Nepal_20.jpg" data-gallery> -->
     
-    <img src="http://www.climbing.is/headPic.php/Nepal_20.jpg" class="article-main-image" width="100%"/>
+    <img [src]="image" class="article-main-image" width="100%"/>
     <h2>
-      <span>Everest-Khumbu</span>
-      <em class="banner-em">Skrifað 2017-12-03</em>
+      <span>{{articleDetails?.fyrirsogn}}</span>
+      <em class="banner-em">Skrifað {{articleDetails?.dagsetning | epochDate |date: 'yyyy-MM-dd'}}</em>
     </h2>
     
     <!-- REM Gummi</a> -->
@@ -19,7 +19,7 @@
 
 <!-- ## Article content ## -->
 
-<div class="container article-container">
+<div class="container article-container">  
 <div class="row">
     
 <div class="col-md-8 no-padd">
