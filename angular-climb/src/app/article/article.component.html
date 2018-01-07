@@ -27,37 +27,10 @@
 <div class="article-labels">
 </div>
 <button id="switch-color" data-toggle="tooltip" data-placement="top"  title="Breyta lit á texta"></button>
-        <p>
-Ég fór í ferð til Nepal sem var mikil upplifun, sem mig langar að segja aðeins frá. Ég hef verið viðloðandi Fjalla-teymið frá upphafi en síðustu ár þegar strákarnir fóru á flug skildu svolítið leiðir.
-</p>
-
-<p>
-Hinn 6. mars var flogið til London, þaðan til Deli og Kathmandu. Ég fór með Vilborgu Örnu sem var fararstjóri í ferðinni, ásamt Dendi Serpa sem var serpinn okkar. Í Kathmandu var stoppað í 2 daga, það var ótrúlegt að upplifa borgina, umferðina, mannlífið, veitingastaði, fataframleiðslu, útfararsiði og fl. og fl.
-</p>
-
-<p>
-Síðan var flogið til Lukla sem er hallandi flugvöllur neðst í Khumbu dalnum í um 2800m hæð og byrjaði gangan þar. Gengið var til Phakding og þaðan til Namche Bazaar sem er í 3440 m. Þessir bæir eru yfirleitt litlir, maður borðar og gistir í svokölluðum tehúsum sem eru oftast snyrtileg, maturinn er góður en svolítið einhæfur til lengdar. <br />
-Ekki er kynding í húsum nema taðofn sem kyntur er í 2 til 3 tíma á kvöldi með uxataði. Á þessum tíma var mjög kalt, frá frostmarki og niður í -15 gráður. Því næst var haldið til Deboche og Dingboche sem er í 4200 m. Farið er rólega upp dalinn og fundum við aðeins fyrir hæðarveiki á leiðinni, þó ekki alvarlegri. 
-</p>
-
-<p>
-Efst í dalnum eru Lobuche og Gorak Shep sem er í 5170 m og þaðan en gengið í Everest base camp (EBC) sem er í 5364 m. Ekki var mikið um að vera í EBC á þessum árstíma, þó einhverjir væru að mæta á svæðið fyrir komandi Everest tímabil. Magnað var að sjá ísfallið og þessar grófu aðstæður, ekki sést til Everest þaðan en við gengum einnig á Kala Patthar sem er í 5600 m. hæð og þaðan sést ágætlega á topp Everest. Eftir heimsókn í EBC var gengið til baka til Dingboche og áfram til Chhukung í hitt verkefni ferðarinnar sem var Island peak (um 6200m).
-</p>
-
-<p>
-Í Dingboche biðum við eftir betra veðri á Island Peak. Þegar veður varð hagstætt gengum upp í Island Peak BC. Lagt var á fjallið upp úr miðnætti og gengið upp um nóttina og fram á næsta dag. Á Island peak var útsýnið alveg magnað, veðrið hefði ekki getað verið betra. Myndir voru teknar, nesti borðað og að lokum haldið niður. Á bakaleiðinni var aðeins stoppað í BC en haldið áfram niður í Chhukung og gist þar. Þetta var langur og strembinn dagur, en afar ánægjulegur.
-</p>
-
-<p>
-Sökum þess að við vorum orðin heldur sein að ganga niður Kumbodalinn, fengum við far með þyrlu niður í Lukla, flugum þaðan til Kathmandu og stoppuðum þar í tvo daga áður en við flugum aftur heim. <br />
-Þetta var ógleymanleg ferð með góðum ferðafélögum, Vilborgu, Serpunum og uxum sem báru dótið okkar. Allt sem maður sér í svona ferð og upplifun að koma á þessa staði á borð við Kala Pattar, EBC og jú auðivtað að toppa Island Peak, öll ferðin eitt ævintýri út í gegn, ævintýri sem gleymist ekki.
-</p>
-
-<p>
-Jón Helgi Guðmundsson
-</p></div>
+<div [innerHTML]="articleDetails?.body"></div>
 </div>
- 
+</div>
+
 <!-- ### Side bar ###	-->
  
 <div class="col-md-4 no-padd">
@@ -160,4 +133,4 @@ Jón Helgi Guðmundsson
 </div><!--end of .row-->
 </div><!--end of .container-->
 
-<app-gallery></app-gallery>
+<app-gallery [art]="articleDetails"></app-gallery>
