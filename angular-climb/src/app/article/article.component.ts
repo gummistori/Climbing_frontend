@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       console.log(this.id);
-      this.data.getArticle(this.id).subscribe(data => this.articleDetails = data);
+      this.data.getArticle(this.id).subscribe(data => {this.articleDetails = data; console.log(data);});
       // In a real app: dispatch action to load the details here.
    });
   }
