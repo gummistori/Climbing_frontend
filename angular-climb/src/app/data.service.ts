@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 import { Article } from './article';
+import { ArticleDetails } from './articleDetails';
 
 @Injectable()
 export class DataService {
@@ -21,6 +22,14 @@ export class DataService {
       .pipe(
         tap(heroes => this.log(`fetched article`)),
         catchError(this.handleError('getArticles', []))
+      );
+  }
+  
+  getArticle(id:number):Observable<ArticleDetails>{
+    return this.http.get<ArticleDetails>(this.ROOT_URL+'getGrein.php?id='+id)
+      .pipe(
+        tap(heroes => this.log(`fetched article`)),
+        catchError(this.handleError('getArticle', []))
       );
   }
 
