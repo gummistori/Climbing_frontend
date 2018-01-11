@@ -23,12 +23,15 @@
 <div class="row">
     
 <div class="col-md-8 no-padd">
-<div class="article-text-container toggle white-text">
-<div class="article-labels">
-</div>
-<button id="switch-color" data-toggle="tooltip" data-placement="top"  title="Breyta lit á texta"></button>
-<div [innerHTML]="articleDetails?.body"></div>
-</div>
+  <div class="article-text-container" [ngClass]="textClass()">
+      <div class="article-labels">
+        <!-- ADD TAGS HERE -->
+        <span class="label">Fjallamennska</span>
+        <span class="label">Svifvængjaflug</span>
+      </div>
+    <button id="switch-color" data-toggle="tooltip" data-placement="top"  (click)="textClass()" title="Breyta lit á texta">T<span style="glyphicon glyphicon-adjust">&nbsp;</span></button>
+    <div [innerHTML]="articleDetails?.body"></div>
+  </div>
 </div>
 
 <!-- ### Side bar ###	-->
