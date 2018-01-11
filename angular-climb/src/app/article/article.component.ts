@@ -25,6 +25,7 @@ export class ArticleComponent implements OnInit {
   ready: boolean = false;
   isn93Y:number;
   isn93X:number;
+  textColor = 0;
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit() {
@@ -56,6 +57,20 @@ export class ArticleComponent implements OnInit {
    //this.map();
   }
 
+  textClass(){
+    let cssClasses = {};
+    
+    if(this.textColor % 2 == 1){
+      cssClasses = {'text-white': false
+      , 'text-black': true};
+    
+    }else{
+      cssClasses = {'text-white': true
+      , 'text-black': false};
+    }
+    this.textColor += 1;
+    return cssClasses;
+  }
   map(){
    
     if (!this.ready){
