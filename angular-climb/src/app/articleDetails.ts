@@ -2,10 +2,11 @@ import { GalleryItem } from './galleryItem';
 
 export interface ArticleDetails {
     id: number;
-    fyrirsogn: string;
-    fyrirsognEng: string;
-    body: string;
-    bodyEng: string;
+    title: string;
+    titleEng: string;
+    writer: string;
+    allurtexti: string;
+    allurtextiEng: string;
     frettaritari: string;
     dagsetning: string;
     videoEmbed: string;
@@ -15,11 +16,12 @@ export interface ArticleDetails {
     lat: number;
     lon: number;
     myndasida: GalleryItem[];
+    tags: number[];
 }
 
 export function getRandomImage(value: GalleryItem[]): string {
     console.log(value);
-    let items: string[] = [];
+    const items: string[] = [];
     for (let i = 0; i < value.length; i++) {
         if (value[i].ratio > 1.4) {
             items.push(value[i].file);

@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
-import { Article } from './article';
 import { ArticleDetails } from './articleDetails';
 
 export interface Tag {

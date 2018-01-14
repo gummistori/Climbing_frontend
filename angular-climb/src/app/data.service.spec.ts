@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 describe('DataService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientModule],
+      imports: [HttpClientModule],
       providers: [DataService]
     });
   });

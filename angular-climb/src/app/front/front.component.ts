@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../article';
+import { ArticleDetails } from '../articleDetails';
 import { DataService } from '../data.service';
 
 
@@ -11,11 +11,11 @@ import { DataService } from '../data.service';
 })
 export class FrontComponent implements OnInit {
 
-  articles: Article[];
+  articles: ArticleDetails[];
 
   constructor(private data: DataService) {}
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this.data.getArticles().subscribe(data => this.articles = data);
   }
 }

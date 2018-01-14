@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService, Tag } from '../data.service';
-import { Article } from '../article';
+import { ArticleDetails } from '../articleDetails';
 
 
 
@@ -13,8 +13,8 @@ import { Article } from '../article';
 })
 export class ArticlesComponent implements OnInit {
 
-  private allArticles: Article[];
-  articles: Article[];
+  private allArticles: ArticleDetails[];
+  articles: ArticleDetails[];
   tags: Tag[] = null;
 
   constructor(private route: ActivatedRoute, private data: DataService) {
@@ -23,14 +23,14 @@ export class ArticlesComponent implements OnInit {
 
   filter() {
   ///  debugger;
-    if (this.tags === null || this.tags.length === 0 || this.allArticles === null){
+    if (this.tags === null || this.tags.length === 0 || this.allArticles === null) {
       this.articles = this.allArticles;
       return;
     }
 
     const first = this.tags[0].checked;
     let allSame = true;
-    let tags = {};
+    const tags = {};
     tags[this.tags[0].id] = this.tags[0].checked;
     for (let i = 1; i < this.tags.length; i++) {
       tags[this.tags[i].id] = this.tags[i].checked;
@@ -45,7 +45,7 @@ export class ArticlesComponent implements OnInit {
       return;
     }
 
-    let list = [];
+    const list = [];
     for (let i = 0; i < this.allArticles.length; i++) {
       if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0) {
         continue;
