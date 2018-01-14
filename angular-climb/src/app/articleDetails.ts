@@ -29,6 +29,9 @@ export function getRandomImage(value: GalleryItem[]): string {
     }
 
     console.log(items);
+    if (items.length === 0) {
+        return null;
+    }
 
     const image = items[ Math.floor(Math.random() * Math.floor(items.length))];
     console.log(image);

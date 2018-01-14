@@ -7,8 +7,7 @@
           <div id="greinalisti">
               <div class="banner banner-subcont vignette-small" *ngFor="let post of articles">
                 <a title="{{post.title}}" routerLink="/Articles/{{post.id}}/{{post.fyrirsognEng}}">
-                  <img *ngIf="post.image != null" [src]="'http://climbing.is/listPic.php/'+post.image" class="article-main-image" width="100%"/>
-                  <div *ngIf="post.image == null" style="height: 300px; width: 100%" class="article-main-image" ></div>
+                  <app-articles-random-image [GalleryItems]="post?.myndasida"> </app-articles-random-image>
                   <h4><span>{{post.title}}</span><em> Skrifað {{post.dagsetning | epochDate | date: 'yyyy-MM-dd'}}</em></h4>
                 </a>
               </div>

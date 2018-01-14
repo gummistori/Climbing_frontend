@@ -25,7 +25,6 @@ interface AllData {
 @Injectable()
 export class DataService {
   public readonly ROOT_URL = 'http://new.climbing.is/';
-  private phonesUrl = 'http://new.climbing.is/getGreinar.php';
   private data: AllData;
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
@@ -38,7 +37,7 @@ export class DataService {
     this.http.get<AllData>(this.ROOT_URL + 'getAll.php')
       .pipe(
         tap(heroes => this.log(`fetched all`)),
-        catchError(this.handleError('getAll', []))
+        catchError(this.handleError('getAll', null))
       ).subscribe(data => {
         window.sessionStorage.setItem('data', JSON.stringify(data));
         this.data = data;
