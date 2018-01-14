@@ -13,7 +13,7 @@ import { ArticleDetails } from '../articleDetails';
 })
 export class ArticlesComponent implements OnInit {
 
-  private allArticles: ArticleDetails[];
+  private allArticles: ArticleDetails[] = null;
   articles: ArticleDetails[];
   tags: Tag[] = null;
 
@@ -23,8 +23,15 @@ export class ArticlesComponent implements OnInit {
 
   filter() {
   ///  debugger;
+    const list = [];
     if (this.tags === null || this.tags.length === 0 || this.allArticles === null) {
-      this.articles = this.allArticles;
+      if (this.allArticles === null) {
+        return;
+      }
+      for (let i = 0; i < 10; i++) {
+        list.push(this.allArticles[i]);
+      }
+      this.articles = list;
       return;
     }
 
@@ -39,13 +46,15 @@ export class ArticlesComponent implements OnInit {
       }
     }
 
-
     if (allSame) {
-      this.articles = this.allArticles;
+      for (let i = 0; i < 10; i++) {
+        list.push(this.allArticles[i]);
+      }
+      this.articles = list;
       return;
     }
 
-    const list = [];
+
     for (let i = 0; i < this.allArticles.length; i++) {
       if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0) {
         continue;
@@ -56,6 +65,10 @@ export class ArticlesComponent implements OnInit {
           list.push(this.allArticles[i]);
           break;
         }
+      }
+
+      if (list.length > 10) {
+        break;
       }
     }
 

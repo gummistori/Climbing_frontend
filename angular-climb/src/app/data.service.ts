@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 import { ArticleDetails } from './articleDetails';
+import { FunctionCall } from '@angular/compiler';
 
 export interface Tag {
   id: number;
@@ -25,7 +26,8 @@ interface AllData {
 @Injectable()
 export class DataService {
   public readonly ROOT_URL = 'http://new.climbing.is/';
-  private data: AllData;
+  private jobs: any[] = [];
+  private data: AllData = null;
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
     const dataValue = window.sessionStorage.getItem('data');
@@ -41,31 +43,59 @@ export class DataService {
       ).subscribe(data => {
         window.sessionStorage.setItem('data', JSON.stringify(data));
         this.data = data;
+        for (let i = 0; i < this.jobs.length; i++) {
+          this.jobs[i].f.call(this, this.jobs[i].a);
+        }
       });
    }
 
   getArticles(): Observable<ArticleDetails[]> {
-    return  new Observable(observer => {
+    const f = function(observer){
       observer.next(this.data.articles);
       observer.complete();
+    };
+
+    return new Observable(observer => {
+      if (this.data !== null) {
+        f.call(this, observer);
+        return;
+      }
+      this.jobs.push({f: f, a: observer});
     });
   }
 
   getArticle(id: number): Observable<ArticleDetails> {
-    return  new Observable(observer => {
+    const f = function(observer) {
       for (let i = 0; i < this.data.articles.length; i++) {
         if (this.data.articles[i].id === id) {
           observer.next(this.data.articles[i]);
+          break;
         }
       }
       observer.complete();
+    };
+
+    return new Observable(observer => {
+      if (this.data !== null) {
+        f.call(this, observer);
+        return;
+      }
+      this.jobs.push({f: f, a: observer});
     });
   }
 
   getTags(): Observable<Tag[]> {
-    return  new Observable(observer => {
+    const f = function(observer){
       observer.next(this.data.tags);
       observer.complete();
+    };
+
+    return new Observable(observer => {
+      if (this.data !== null) {
+        f.call(this, observer);
+        return;
+      }
+      this.jobs.push({f: f, a: observer});
     });
   }
 
