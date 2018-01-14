@@ -7,7 +7,7 @@
     
     <img [src]="image" class="article-main-image" width="100%"/>
     <h2>
-      <span>{{articleDetails?.fyrirsogn}}</span>
+      <span>{{articleDetails?.title}}</span>
       <em class="banner-em">Skrifað {{articleDetails?.dagsetning | epochDate |date: 'yyyy-MM-dd'}}</em>
     </h2>
     
@@ -29,8 +29,9 @@
         <span class="label">Fjallamennska</span>
         <span class="label">Svifvængjaflug</span>
       </div>
-    <button  id="switch-color" data-toggle="tooltip" data-placement="top"  (click)="textClass()" title="Breyta lit á texta"><span class="glyphicon glyphicon-adjust">&nbsp;</span></button>
-    <div [innerHTML]="articleDetails?.body"></div>
+    <button  id="switch-color" data-toggle="tooltip" data-placement="top"  (click)="textClass()" title="Breyta lit á texta">
+      <span class="glyphicon glyphicon-adjust">&nbsp;</span></button>
+    <div [innerHTML]="articleDetails?.allurtexti"></div>
   </div>
 </div>
 

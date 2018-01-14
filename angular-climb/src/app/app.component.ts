@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Article } from './article';
 import { NgClass } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Fjallateymið - climbing.is';
 
   readonly ROOT_URL = 'http://new.climbing.is/getGreinar.php';
@@ -19,11 +19,11 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
 
-  getArticles(){
+  getArticles() {
     this.articles = this.http.get<Article[]>(this.ROOT_URL);
   }
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this.getArticles();
 
   }

@@ -4,12 +4,8 @@ import { DataService } from '../data.service';
 import { ArticleDetails, getRandomImage } from '../articleDetails';
 import { debug } from 'util';
 
-//declare var swMap: any;
-
-//import 'http://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2';
-
-declare var SWMap:any;
-declare var google:any;
+declare var SWMap: any;
+declare var google: any;
 
 @Component({
   selector: 'app-article',
@@ -19,7 +15,7 @@ declare var google:any;
 })
 
 export class ArticleComponent implements OnInit {
-  siteWatchMap:any;
+  siteWatchMap: any;
   id: number;
   articleDetails: ArticleDetails;
   image: string = "";
@@ -41,98 +37,124 @@ export class ArticleComponent implements OnInit {
         this.id = +params['id']; // (+) converts string 'id' to a number
         //console.log(this.id);
         this.data.getArticle(this.id).subscribe(data => {
-        this.articleDetails = data; 
-        this.image = "https://www.climbing.is/headPic.php/"+getRandomImage(data.gallery);
-        //console.log(data);
+
+        this.articleDetails = data;
+        this.image = 'http://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
+
         this.isn93X = data.x;
         this.isn93Y = data.y;
         this.lat = data.lat;
         this.lon = data.lon;
         this.ready = true;
-        if (!document.getElementById("SiteWatchLibrary") && this.isn93X !== null && this.isn93Y !== null){
-          var script = document.createElement("script");
-          script.src = "https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2";//&Compress=False";
-          script.id = "SiteWatchLibrary";
-          var _me = this;
-          script.onload = function() {  window.setTimeout(function(){ _me.map();}, 100);};
+          
+        if (!document.getElementById('SiteWatchLibrary') && this.isn93X !== null && this.isn93Y !== null) {
+          const script = document.createElement('script');
+          script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
+          script.id = 'SiteWatchLibrary';
+          const me = this;
+          script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
           document.body.appendChild( script );
         }
-        if (!document.getElementById("GoogleMapLibrary") && this.lat !== null && this.lon !== null){
-          var script = document.createElement("script");
-          script.src = "https://maps.googleapis.com/maps/api/js?sensor=false";
-          script.id = "SiteWatchLibrary";
-          var _me = this;
-          script.onload = function() {  window.setTimeout(function(){ _me.map();}, 100);};
-          document.body.appendChild( script );    
+        if (!document.getElementById('GoogleMapLibrary') && this.lat !== null && this.lon !== null) {
+          const script = document.createElement('script');
+          script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+          script.id = 'SiteWatchLibrary';
+          const me = this;
+          script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
+          document.body.appendChild( script );
+
         }
-        this.map();        
+        this.map();
       // In a real app: dispatch action to load the details here.
    });
   });
-
-   //this.map();
   }
 
   textClass() {
-    
-    if(this.textColor % 2 == 1){
+    if (this.textColor % 2 === 1) {
       this.cssClasses = {'text-white': false
       , 'text-black': true};
-    
-    }else{
+    } else {
       this.cssClasses = {'text-white': true
       , 'text-black': false};
     }
     this.textColor += 1;
-    
   }
+  map() {
+    if (!this.ready) {
 
-  map() {   
-    if (!this.ready){
       return;
     }
 
     if (this.isn93X !== null && this.isn93Y !== null) {
       try {
-        if (!SWMap){
+        if (!SWMap) {
           return;
         }
-      } catch(Exception) {
+      } catch (Exception) {
         return;
       }
 
-      
-      this.siteWatchMap = SWMap.create("map", { panButton: false, zoomButton: false, defaultZoom: 1, defaultCenterPoint: { x: this.isn93X, y: this.isn93Y} });
-        var marker = this.siteWatchMap.addMarker('svaedi', { x: this.isn93X, y: this.isn93Y }, 
+
+      this.siteWatchMap = SWMap.create('map',
+        { panButton: false, zoomButton: false, defaultZoom: 1, defaultCenterPoint: { x: this.isn93X, y: this.isn93Y} });
+      this.siteWatchMap.addMarker('svaedi', { x: this.isn93X, y: this.isn93Y },
           '',
           'https://new.climbing.is/img/poi.png');
-    
       this.siteWatchMap.setDataset(1);
     }
 
-    if(this.lon !== null && this.lat !== null) {
+    if (this.lon !== null && this.lat !== null) {
       try {
-        if (!google){
+        if (!google) {
           return;
         }
-      } catch(Exception) {
+      } catch (Exception) {
         return;
       }
-      var mapOptions = {
-    		zoom: 5,
-    		disableDefaultUI: true,
-    		mapTypeId: google.maps.MapTypeId.TERRAIN,
-    		center: new google.maps.LatLng(this.lat, this.lon),
-    		styles: [{"featureType": "all","elementType": "all","stylers": [{"saturation": "20"}]},{"featureType": "administrative","elementType": "labels","stylers": [{"visibility": "on"}]},{"featureType": "administrative.province","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.province","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType": "administrative.locality","elementType": "all","stylers": [{"visibility": "on"}]},{"featureType": "administrative.neighborhood","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.land_parcel","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape","elementType": "all","stylers": [{"saturation": "-47"},{"lightness": "0"},{"hue": "#00ffcd"}]},{"featureType": "landscape.man_made","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "landscape.natural.terrain","elementType": "all","stylers": [{"lightness": "0"}]},{"featureType": "poi","elementType": "all","stylers": [{"lightness": "0"},{"visibility": "off"},{"saturation": "-82"}]},{"featureType": "road","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType": "road.highway.controlled_access","elementType": "all","stylers": [{"visibility": "on"}]},{"featureType": "road.highway.controlled_access","elementType": "labels","stylers": [{"visibility": "off"}]},{"featureType": "transit","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "water","elementType": "all","stylers": [{"saturation": "-82"},{"lightness": "-60"},{"hue": "#009eff"}]},{"featureType": "water","elementType": "labels","stylers": [{"visibility": "off"}]}]};
-      	var mapElement = document.getElementById('map');
-      	var map = new google.maps.Map(mapElement, mapOptions);
-      	var marker = new google.maps.Marker(
-      	{
-      		position: new google.maps.LatLng(this.lat, this.lon),
-      		map: map,
-      		icon: 'https://new.climbing.is/img/poi.png',
-      		title: 'Climbing.is'
-      	});
+      const mapOptions = {
+        zoom: 5,
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        center: new google.maps.LatLng(this.lat, this.lon),
+        styles: [
+          {'featureType': 'all',
+          'elementType': 'all',
+          'stylers': [{'saturation': '20'}]},
+          {'featureType': 'administrative',
+          'elementType': 'labels',
+          'stylers': [{'visibility': 'on'}]},
+          {'featureType': 'administrative.province',
+          'elementType': 'all',
+          'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'administrative.province',
+          'elementType': 'labels',
+          'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'administrative.locality',
+          'elementType': 'all', 'stylers': [{'visibility': 'on'}]},
+          {'featureType': 'administrative.neighborhood', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'administrative.land_parcel', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'landscape', 'elementType': 'all', 'stylers': [{'saturation': '-47'},
+          {'lightness': '0'},
+          {'hue': '#00ffcd'}]},
+          {'featureType': 'landscape.man_made', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'landscape.natural.terrain', 'elementType': 'all', 'stylers': [{'lightness': '0'}]},
+          {'featureType': 'poi', 'elementType': 'all', 'stylers': [{'lightness': '0'}, {'visibility': 'off'}, {'saturation': '-82'}]},
+          {'featureType': 'road', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'road.highway.controlled_access', 'elementType': 'all', 'stylers': [{'visibility': 'on'}]},
+          {'featureType': 'road.highway.controlled_access', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'transit', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'water', 'elementType': 'all', 'stylers': [{'saturation': '-82'}, {'lightness': '-60'}, {'hue': '#009eff'}]},
+          {'featureType': 'water', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]}]};
+      const mapElement = document.getElementById('map');
+      const map = new google.maps.Map(mapElement, mapOptions);
+      const marker = new google.maps.Marker(
+      {
+        position: new google.maps.LatLng(this.lat, this.lon),
+        map: map,
+        icon: 'http://new.climbing.is/img/poi.png',
+        title: 'Climbing.is'
+      });
     }
   }
 
