@@ -28,7 +28,10 @@ export class ArticleComponent implements OnInit {
   isn93X:number = null;
   lat:number = null;
   lon:number = null;
-  textColor = 0;
+  textColor = 1;
+  cssClasses = {'text-white': true
+  , 'text-black': false};
+  
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit() {
@@ -36,11 +39,11 @@ export class ArticleComponent implements OnInit {
 
     this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
-        console.log(this.id);
+        //console.log(this.id);
         this.data.getArticle(this.id).subscribe(data => {
         this.articleDetails = data; 
-        this.image = "http://www.climbing.is/headPic.php/"+getRandomImage(data.gallery);
-        console.log(data);
+        this.image = "https://www.climbing.is/headPic.php/"+getRandomImage(data.gallery);
+        //console.log(data);
         this.isn93X = data.x;
         this.isn93Y = data.y;
         this.lat = data.lat;
@@ -50,16 +53,16 @@ export class ArticleComponent implements OnInit {
           var script = document.createElement("script");
           script.src = "https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2";//&Compress=False";
           script.id = "SiteWatchLibrary";
-          var me = this;
-          script.onload = function() {  window.setTimeout(function(){ me.map();}, 100);};
+          var _me = this;
+          script.onload = function() {  window.setTimeout(function(){ _me.map();}, 100);};
           document.body.appendChild( script );
         }
         if (!document.getElementById("GoogleMapLibrary") && this.lat !== null && this.lon !== null){
           var script = document.createElement("script");
           script.src = "https://maps.googleapis.com/maps/api/js?sensor=false";
           script.id = "SiteWatchLibrary";
-          var me = this;
-          script.onload = function() {  window.setTimeout(function(){ me.map();}, 100);};
+          var _me = this;
+          script.onload = function() {  window.setTimeout(function(){ _me.map();}, 100);};
           document.body.appendChild( script );    
         }
         this.map();        
@@ -70,20 +73,20 @@ export class ArticleComponent implements OnInit {
    //this.map();
   }
 
-  textClass(){
-    let cssClasses = {};
+  textClass() {
     
     if(this.textColor % 2 == 1){
-      cssClasses = {'text-white': false
+      this.cssClasses = {'text-white': false
       , 'text-black': true};
     
     }else{
-      cssClasses = {'text-white': true
+      this.cssClasses = {'text-white': true
       , 'text-black': false};
     }
     this.textColor += 1;
-    return cssClasses;
+    
   }
+
   map() {   
     if (!this.ready){
       return;
@@ -102,7 +105,7 @@ export class ArticleComponent implements OnInit {
       this.siteWatchMap = SWMap.create("map", { panButton: false, zoomButton: false, defaultZoom: 1, defaultCenterPoint: { x: this.isn93X, y: this.isn93Y} });
         var marker = this.siteWatchMap.addMarker('svaedi', { x: this.isn93X, y: this.isn93Y }, 
           '',
-          'http://new.climbing.is/img/poi.png');
+          'https://new.climbing.is/img/poi.png');
     
       this.siteWatchMap.setDataset(1);
     }
@@ -127,7 +130,7 @@ export class ArticleComponent implements OnInit {
       	{
       		position: new google.maps.LatLng(this.lat, this.lon),
       		map: map,
-      		icon: 'http://new.climbing.is/img/poi.png',
+      		icon: 'https://new.climbing.is/img/poi.png',
       		title: 'Climbing.is'
       	});
     }
