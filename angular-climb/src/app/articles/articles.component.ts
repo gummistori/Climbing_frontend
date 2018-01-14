@@ -23,12 +23,14 @@ export class ArticlesComponent implements OnInit {
 
   filter() {
   ///  debugger;
+    if (this.allArticles === null) {
+      return;
+    }
+
+    const max = 20;
     const list = [];
-    if (this.tags === null || this.tags.length === 0 || this.allArticles === null) {
-      if (this.allArticles === null) {
-        return;
-      }
-      for (let i = 0; i < 10; i++) {
+    if (this.tags === null || this.tags.length === 0) {
+      for (let i = 0; i < max; i++) {
         list.push(this.allArticles[i]);
       }
       this.articles = list;
@@ -47,7 +49,7 @@ export class ArticlesComponent implements OnInit {
     }
 
     if (allSame) {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < max; i++) {
         list.push(this.allArticles[i]);
       }
       this.articles = list;
@@ -67,7 +69,7 @@ export class ArticlesComponent implements OnInit {
         }
       }
 
-      if (list.length > 10) {
+      if (list.length > max) {
         break;
       }
     }
