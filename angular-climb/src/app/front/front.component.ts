@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleDetails, getRandomImage } from '../articleDetails';
 import { DataService } from '../data.service';
 
-interface frontData {
+interface FrontData {
   article: ArticleDetails;
   image: string;
 }
@@ -15,13 +15,13 @@ interface frontData {
 })
 export class FrontComponent implements OnInit {
 
-  articles: frontData[];
+  articles: FrontData[];
 
   constructor(private data: DataService) {}
 
   ngOnInit() {
     this.data.getArticles().subscribe(data => {
-      const list: frontData[] = [];
+      const list: FrontData[] = [];
       for (let i = 0; i < 5; i++) {
         list.push({article: data[i], image: getRandomImage(data[i].myndasida)});
       }

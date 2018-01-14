@@ -18,16 +18,16 @@ export class ArticleComponent implements OnInit {
   siteWatchMap: any;
   id: number;
   articleDetails: ArticleDetails;
-  image: string = "";
-  ready: boolean = false;
-  isn93Y:number = null;
-  isn93X:number = null;
-  lat:number = null;
-  lon:number = null;
+  image = '';
+  ready = false;
+  isn93Y: number = null;
+  isn93X: number = null;
+  lat: number = null;
+  lon: number = null;
   textColor = 1;
   cssClasses = {'text-white': true
   , 'text-black': false};
-  
+
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class ArticleComponent implements OnInit {
 
     this.route.params.subscribe(params => {
         this.id = +params['id']; // (+) converts string 'id' to a number
-        //console.log(this.id);
+        // console.log(this.id);
         this.data.getArticle(this.id).subscribe(data => {
 
         this.articleDetails = data;
@@ -46,7 +46,7 @@ export class ArticleComponent implements OnInit {
         this.lat = data.lat;
         this.lon = data.lon;
         this.ready = true;
-          
+
         if (!document.getElementById('SiteWatchLibrary') && this.isn93X !== null && this.isn93Y !== null) {
           const script = document.createElement('script');
           script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
