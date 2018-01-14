@@ -790,7 +790,7 @@ body{
 }
 
 .filter .panel{
-	margin-top:-60px;
+/*	margin-top:-60px;*/
 	padding:0;
 }
 .filter .panel-heading{
