@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleDetails } from '../articleDetails';
+import { ArticleDetails, getRandomImage } from '../articleDetails';
 import { DataService } from '../data.service';
 
+interface frontData {
+  article: ArticleDetails;
+  image: string;
+}
 
 @Component({
   selector: 'app-front',
@@ -11,11 +15,17 @@ import { DataService } from '../data.service';
 })
 export class FrontComponent implements OnInit {
 
-  articles: ArticleDetails[];
+  articles: frontData[];
 
   constructor(private data: DataService) {}
 
   ngOnInit() {
-    this.data.getArticles().subscribe(data => this.articles = data);
+    this.data.getArticles().subscribe(data => {
+      const list: frontData[] = [];
+      for (let i = 0; i < 5; i++) {
+        list.push({article: data[i], image: getRandomImage(data[i].myndasida)});
+      }
+      this.articles = list;
+    });
   }
 }

@@ -42,7 +42,7 @@ import { ArticlesRandomImageComponent } from './articles.random.image/articles.r
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    // environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     HttpClientModule
   ],
   providers: [DataService],

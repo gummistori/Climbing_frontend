@@ -25,6 +25,8 @@ export class ArticleComponent implements OnInit {
   lat: number = null;
   lon: number = null;
   textColor = 0;
+  cssClasses = {'text-white': true
+  , 'text-black': false};
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit() {
@@ -65,17 +67,15 @@ export class ArticleComponent implements OnInit {
   }
 
   textClass() {
-    let cssClasses = {};
 
     if (this.textColor % 2 === 1) {
-      cssClasses = {'text-white': false
+      this.cssClasses = {'text-white': false
       , 'text-black': true};
     } else {
-      cssClasses = {'text-white': true
+      this.cssClasses = {'text-white': true
       , 'text-black': false};
     }
     this.textColor += 1;
-    return cssClasses;
   }
   map() {
     if (!this.ready) {
