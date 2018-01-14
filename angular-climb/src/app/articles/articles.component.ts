@@ -15,44 +15,44 @@ export class ArticlesComponent implements OnInit {
 
   private allArticles: Article[];
   articles: Article[];
-  tags : Tag[];
+  tags: Tag[] = null;
 
   constructor(private route: ActivatedRoute, private data: DataService) {
     this.route.params.subscribe( params => console.log(params) );
    }
 
-  filter(){
+  filter() {
   ///  debugger;
     if (this.tags === null || this.tags.length === 0 || this.allArticles === null){
       this.articles = this.allArticles;
       return;
     }
 
-    var first = this.tags[0].checked;
-    var allSame = true;
-    var tags = {};
+    const first = this.tags[0].checked;
+    let allSame = true;
+    let tags = {};
     tags[this.tags[0].id] = this.tags[0].checked;
-    for (var i = 1; i < this.tags.length; i++){
+    for (let i = 1; i < this.tags.length; i++) {
       tags[this.tags[i].id] = this.tags[i].checked;
-      if (first !== this.tags[i].checked){
+      if (first !== this.tags[i].checked) {
         allSame = false;
       }
     }
 
 
-    if (allSame){
+    if (allSame) {
       this.articles = this.allArticles;
       return;
     }
-    
-    var list = [];
-    for (var i =0; i< this.allArticles.length; i++){
-      if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0){
+
+    let list = [];
+    for (let i = 0; i < this.allArticles.length; i++) {
+      if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0) {
         continue;
       }
 
-      for (var t =0; t < this.allArticles[i].tags.length; t++){      
-        if (tags[this.allArticles[i].tags[t]]){
+      for (let t = 0; t < this.allArticles[i].tags.length; t++) {
+        if (tags[this.allArticles[i].tags[t]]) {
           list.push(this.allArticles[i]);
           break;
         }
@@ -62,12 +62,13 @@ export class ArticlesComponent implements OnInit {
     this.articles = list;
   }
   ngOnInit() {
-    this.data.getArticles().subscribe(data => {this.allArticles = data; this.filter();});
+    this.data.getArticles().subscribe(data => { this.allArticles = data; this.filter(); });
     this.data.getTags().subscribe(data => {
-      for (var i = 0; i < data.length; i++){
+      for (let i = 0; i < data.length; i++) {
         data[i].checked = false;
       }
-      this.tags = data});
+      this.tags = data;
+    });
   }
 
 }

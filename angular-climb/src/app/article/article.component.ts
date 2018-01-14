@@ -4,12 +4,8 @@ import { DataService } from '../data.service';
 import { ArticleDetails, getRandomImage } from '../articleDetails';
 import { debug } from 'util';
 
-//declare var swMap: any;
-
-//import 'http://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2';
-
-declare var SWMap:any;
-declare var google:any;
+declare var SWMap: any;
+declare var google: any;
 
 @Component({
   selector: 'app-article',
@@ -19,15 +15,15 @@ declare var google:any;
 })
 
 export class ArticleComponent implements OnInit {
-  siteWatchMap:any;
+  siteWatchMap: any;
   id: number;
   articleDetails: ArticleDetails;
-  image: string = "";
-  ready: boolean = false;
-  isn93Y:number = null;
-  isn93X:number = null;
-  lat:number = null;
-  lon:number = null;
+  image = '';
+  ready = false;
+  isn93Y: number = null;
+  isn93X: number = null;
+  lat: number = null;
+  lon: number = null;
   textColor = 0;
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
@@ -38,78 +34,76 @@ export class ArticleComponent implements OnInit {
         this.id = +params['id']; // (+) converts string 'id' to a number
         console.log(this.id);
         this.data.getArticle(this.id).subscribe(data => {
-        this.articleDetails = data; 
-        this.image = "http://www.climbing.is/headPic.php/"+getRandomImage(data.gallery);
+        this.articleDetails = data;
+        this.image = 'http://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
         console.log(data);
         this.isn93X = data.x;
         this.isn93Y = data.y;
         this.lat = data.lat;
         this.lon = data.lon;
         this.ready = true;
-        if (!document.getElementById("SiteWatchLibrary") && this.isn93X !== null && this.isn93Y !== null){
-          var script = document.createElement("script");
-          script.src = "https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2";//&Compress=False";
-          script.id = "SiteWatchLibrary";
+        if (!document.getElementById('SiteWatchLibrary') && this.isn93X !== null && this.isn93Y !== null) {
+          const script = document.createElement('script');
+          script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2';//&Compress=False";
+          script.id = 'SiteWatchLibrary';
           var me = this;
           script.onload = function() {  window.setTimeout(function(){ me.map();}, 100);};
           document.body.appendChild( script );
         }
-        if (!document.getElementById("GoogleMapLibrary") && this.lat !== null && this.lon !== null){
-          var script = document.createElement("script");
+        if (!document.getElementById("GoogleMapLibrary") && this.lat !== null && this.lon !== null) {
+          const script = document.createElement("script");
           script.src = "https://maps.googleapis.com/maps/api/js?sensor=false";
           script.id = "SiteWatchLibrary";
-          var me = this;
-          script.onload = function() {  window.setTimeout(function(){ me.map();}, 100);};
-          document.body.appendChild( script );    
+          const me = this;
+          script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
+          document.body.appendChild( script );
         }
-        this.map();        
+        this.map();
       // In a real app: dispatch action to load the details here.
    });
   });
-
-   //this.map();
   }
 
-  textClass(){
+  textClass() {
     let cssClasses = {};
-    
-    if(this.textColor % 2 == 1){
+
+    if (this.textColor % 2 === 1) {
       cssClasses = {'text-white': false
       , 'text-black': true};
-    
-    }else{
+    } else {
       cssClasses = {'text-white': true
       , 'text-black': false};
     }
     this.textColor += 1;
     return cssClasses;
   }
-  map() {   
-    if (!this.ready){
+  map() {
+    if (!this.ready) {
       return;
     }
 
     if (this.isn93X !== null && this.isn93Y !== null) {
       try {
-        if (!SWMap){
+        if (!SWMap) {
           return;
         }
-      } catch(Exception) {
+      } catch (Exception) {
         return;
       }
 
-      
-      this.siteWatchMap = SWMap.create("map", { panButton: false, zoomButton: false, defaultZoom: 1, defaultCenterPoint: { x: this.isn93X, y: this.isn93Y} });
-        var marker = this.siteWatchMap.addMarker('svaedi', { x: this.isn93X, y: this.isn93Y }, 
+
+      this.siteWatchMap = SWMap.create('map',
+        { panButton: false, zoomButton: false, defaultZoom: 1, defaultCenterPoint: { x: this.isn93X, y: this.isn93Y} });
+      this.siteWatchMap.addMarker('svaedi', { x: this.isn93X, y: this.isn93Y },
           '',
           'http://new.climbing.is/img/poi.png');
-    
+
       this.siteWatchMap.setDataset(1);
     }
 
-    if(this.lon !== null && this.lat !== null) {
+    if (this.lon !== null && this.lat !== null) {
       try {
-        if (!google){
+        if (!google) {
           return;
         }
       } catch(Exception) {

@@ -1,11 +1,11 @@
 import { GalleryItem } from './galleryItem';
 
 export interface ArticleDetails {
+    id: number;
     fyrirsogn: string;
     fyrirsognEng: string;
     body: string;
     bodyEng: string;
-    myndasida: number;
     frettaritari: string;
     dagsetning: string;
     videoEmbed: string;
@@ -14,17 +14,21 @@ export interface ArticleDetails {
     y: number;
     lat: number;
     lon: number;
-    gallery: GalleryItem[];
-};
+    myndasida: GalleryItem[];
+}
 
-export function getRandomImage(value: GalleryItem[]): string{
+export function getRandomImage(value: GalleryItem[]): string {
     console.log(value);
-    var item: string[] = [];
-    for (var i = 0; i < value.length; i++){
-        if (value[i].ratio > 1.4){
-            item.push(value[i].file);
+    let items: string[] = [];
+    for (let i = 0; i < value.length; i++) {
+        if (value[i].ratio > 1.4) {
+            items.push(value[i].file);
         }
     }
 
-    return item[ Math.floor(Math.random() * Math.floor(item.length))] ; // "Nepal_24e.jpg";
-};
+    console.log(items);
+
+    const image = items[ Math.floor(Math.random() * Math.floor(items.length))];
+    console.log(image);
+    return image; // "Nepal_24e.jpg";
+}
