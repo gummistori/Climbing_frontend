@@ -9,4 +9,9 @@ export class NavComponent {
 
   constructor() { }
 
+  public collapse = true;
+
+  public showHide() {
+    this.collapse = !this.collapse;
+  }
 }
