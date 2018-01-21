@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EpochDatePipe } from '../epoch-date.pipe';
+import { ArticlesRandomImageComponent } from '../articles.random.image/articles.random.image.component';
 
 
 describe('ArticlesComponent', () => {
@@ -13,7 +14,7 @@ describe('ArticlesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlesComponent, EpochDatePipe ],
+      declarations: [ ArticlesComponent, EpochDatePipe, ArticlesRandomImageComponent ],
       imports: [RouterTestingModule, FormsModule, HttpClientModule]
     })
     .compileComponents();

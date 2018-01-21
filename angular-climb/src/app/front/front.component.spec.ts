@@ -5,6 +5,7 @@ import { BannersComponent } from '../banners/banners.component';
 import { DataService } from './../data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { EpochDatePipe } from '../epoch-date.pipe';
 
 
 describe('FrontComponent', () => {
@@ -13,7 +14,7 @@ describe('FrontComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrontComponent, BannersComponent ],
+      declarations: [ FrontComponent, BannersComponent, EpochDatePipe ],
       imports: [HttpClientModule, RouterTestingModule]
     })
     .compileComponents();
