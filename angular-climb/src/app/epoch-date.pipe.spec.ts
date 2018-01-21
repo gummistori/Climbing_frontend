@@ -11,18 +11,18 @@ describe('EpochDatePipe', () => {
   });
   it ('check value 0', () => {
     const pipe = new EpochDatePipe();
-    expect(pipe.transform("/Date(0)/")).toEqual(new Date(0));
+    expect(pipe.transform('/Date(0)/')).toEqual(new Date(0));
   });
   it ('check value -1000', () => {
     const pipe = new EpochDatePipe();
-    expect(pipe.transform("/Date(-1000)/")).toEqual(new Date(-1000*1000));
+    expect(pipe.transform('/Date(-1000)/')).toEqual(new Date(-1000 * 1000));
   });
   it ('check value 1000', () => {
     const pipe = new EpochDatePipe();
-    expect(pipe.transform("/Date(1000)/")).toEqual(new Date(1000*1000));
+    expect(pipe.transform('/Date(1000)/')).toEqual(new Date(1000 * 1000));
   });
   it ('check value 1000.5', () => {
     const pipe = new EpochDatePipe();
-    expect(pipe.transform("/Date(1000.5)/")).toEqual(new Date(1000.5*1000));
+    expect(pipe.transform('/Date(1000.5)/')).toEqual(new Date(1000.5 * 1000));
   });
 });

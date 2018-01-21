@@ -8,7 +8,7 @@
               <div class="banner banner-subcont vignette-small" *ngFor="let post of articles">
                 <a title="{{post.title}}" routerLink="/Articles/{{post.id}}/{{post.fyrirsognEng}}">
                   <app-articles-random-image [GalleryItems]="post?.myndasida"> </app-articles-random-image>
-                  <h4><span>{{post.title}}</span><em> Skrifað {{post.dagsetning | epochDate | date: 'yyyy-MM-dd'}}</em></h4>
+                  <h4><span>{{ post.title }}</span><em> Skrifað {{ post.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h4>
                 </a>
               </div>
           </div> 
@@ -24,7 +24,7 @@
                 <label>
                   <input type="checkbox"  [(ngModel)]="item.checked" (change)="filter()">
                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                  <span class="go-left">{{item.name}}</span>
+                  <span class="go-left">{{ item.name }}</span>
                 </label>
               </div>
           </div>

@@ -52,7 +52,10 @@ export class ArticleComponent implements OnInit {
           script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
           script.id = 'SiteWatchLibrary';
           const me = this;
-          script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
+          script.onload = function() {
+            me.map();
+           // window.setTimeout(function(){ me.map(); }, 100);
+          };
           document.body.appendChild( script );
         }
         if (!document.getElementById('GoogleMapLibrary') && this.lat !== null && this.lon !== null) {

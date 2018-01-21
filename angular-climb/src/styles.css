@@ -1,2 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
-/*@import '~bootstrap/dist/css/bootstrap.min.css';*/
+@import '~bootstrap/dist/css/bootstrap.min.css'; 
+@import 'bootstrap_climb.css';
+@import 'styles_climb.css';
+
+@import 'https://fonts.googleapis.com/css?family=Play:400,700|Open+Sans:400,600,300italic';
+@import 'https://fonts.googleapis.com/css?family=Josefin+Slab:400,600';
+
+@import "https://www.climbing.is/css/blueimp-gallery.min.css";
+@import "https://www.climbing.is/css/bootstrap-image-gallery.css";
+
+.text-black {
+    background-color: #EDEDED !important;
+    color: black;
+  }
+  .text-white {
+    background-color: black;
+    color: white;
+  }
+  .black-text #switch-color {
+  color: #888;
+  background-image: url(../img/switch2.png) !important;
+  }
+  .white-text #switch-color {
+  color: #888;
+  background-image: url(../img/switch1.png) !important;
+  }
+  #switch-color {
+      opacity: 0.7;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: none;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+  }

@@ -14,7 +14,7 @@ describe('FrontComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FrontComponent, BannersComponent ],
-      imports:[HttpClientModule,RouterTestingModule]
+      imports: [HttpClientModule, RouterTestingModule]
     })
     .compileComponents();
   }));

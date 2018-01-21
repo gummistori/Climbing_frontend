@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { FrontComponent } from './front/front.component';
 import { ArticleComponent } from './article/article.component';
-import { GalleryComponent } from './gallery/gallery.component'
+import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'Articles/:id', component: ArticleComponent}
