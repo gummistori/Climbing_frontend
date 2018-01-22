@@ -7,8 +7,14 @@ describe('angular-climb App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Ttile', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getTitle()).toEqual('Fjallateymið - climbing.is');
+  });
+
+  it('Get Articles', () => {
+    page.navigateToArticles();
+    page.debugger();
+    // expect(page.)
   });
 });
