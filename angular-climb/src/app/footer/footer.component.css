@@ -1,0 +1,31 @@
+
+.footer{
+	padding:40px 0;
+	background:rgba(0,0,0,0.50);
+}
+.footer .about-us-link{
+	padding-top:0px;
+}
+@media (max-width: 768px) {
+    .footer .align-right{
+        text-align:center !important;
+        float:none;
+    }
+}
+body {
+    background: url(/img/iceland_bg.jpg) left top repeat
+  }
+  
+/* Share */
+
+ul.share-buttons{
+    font-size:16px;
+    margin:20px 0 20px -30px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul.share-buttons li{
+    display: inline;
+    margin-left:30px;
+  }

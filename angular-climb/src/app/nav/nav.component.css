@@ -1,0 +1,137 @@
+/* Nav fix */
+
+.navbar{
+    margin: 0;
+    padding:50px 0;
+    background:none;
+    position:relative;
+   }
+   .logo{
+       height:inherit;
+       z-index:2;
+       margin-left:20px;
+   }
+   .logo img{
+       position:relative;
+       height:90px; width:auto;
+   }
+   .logo-container{
+       position:relative;
+   }
+   .logo-cont{
+       position:absolute; left:0; z-index:9999;
+   }
+   .navbar-nav li a{
+       border:none;
+       text-transform:uppercase;
+       padding:0 0 10px 0;
+       margin:20px 20px 10px 20px;
+   }
+   .navbar-nav li.active a, .navbar-nav li.active a:hover{
+       border:solid rgba(255,95,47,1.00);
+       border-width:0 0 1px 0;
+   }
+   .navbar-nav li a{
+       background:none !important;
+   }
+   .mobile-search{
+       padding:10px 20px 20px 20px;
+   }
+   .navbar-toggle{
+     z-index:2;
+   }
+   @media (min-width: 992px) {
+   .main-nav{
+       top:20px;
+   }
+   }
+   @media (max-width: 992px) {
+   .logo img{
+       height:60px; width:auto;
+   }
+   }
+   @media (max-width: 390px) {
+   .logo img{
+       height:50px; width:auto;
+       top:0px;
+   }
+   }
+   @media (max-width: 768px) {
+   .navbar-nav li.active a, .navbar-nav li.active a:hover{
+       border:none;
+   }
+   .logo img{
+       top:-5px;
+   }
+   .navbar{
+    margin: 0;
+    padding:30px 0;
+    background:none;
+    position:relative;
+   }
+   .navbar-collapse{
+       position:relative;
+       top:30px;
+   }
+   }
+   
+   /* Search bar */
+   
+   .main-nav{
+       position:relative;
+   }
+   .searchbox-container{
+       position:absolute;
+       top:11px; right:0px;
+       overflow:visible;
+       padding:0; margin:0;
+       zindex:3;
+       width:40px;
+   }
+   .searchbox{
+       position:relative;
+       min-width:40px;
+       width:0%;
+       height:40px;
+       float:right;
+       overflow:hidden;
+       
+       -webkit-transition: width 0.15s;
+       -moz-transition: width 0.15s;
+       -ms-transition: width 0.15s;
+       -o-transition: width 0.15s;
+       transition: width 0.15s;
+   }
+   
+   .searchbox-input{
+       top:40px;
+       right:40px;
+       width:391px;
+       height:40px;
+       margin:0;
+       padding:0px 55px 0px 20px;
+   }
+   .searchbox-icon,
+   .searchbox-submit{
+       width:40px;
+       height:40px;
+       display:block;
+       position:absolute;
+       top:0;
+       right:0;
+       padding:0;
+       margin:0;
+       border:0;
+       outline:0;
+       line-height:40px;
+       text-align:center;
+       cursor:pointer;
+       background:#000000;
+   }
+   .searchbox-icon:hover{
+   color:#FFF;
+   }
+   .searchbox-open{
+       width:430px;
+   }
+   

@@ -1,0 +1,76 @@
+/* Sw fix */
+#map #SiteWatch_12, #area-mini-kort #map, #map #SiteWatch_7, #map #SiteWatch_12, #map #SiteWatch_5{
+	display:none !important;
+}
+#map #SiteWatch_6{
+	margin:0;
+	padding:0;
+	background:none !important;
+	border:none !important;
+}
+#map #SiteWatch_8{
+	font-family: ZettaSan, sans-serif !important;
+	font-weight:normal !important;
+	font-size:12px !important;
+	letter-spacing:1px;
+	color:#333 !important;
+}
+#SiteWatch_4{
+	position:absolute;
+	right:5px !important;
+	bottom:5px !important;	
+}
+#map #SiteWatch_6{
+	margin:0;
+	padding:0;
+	background:none !important;
+	border:none !important;
+}
+#map #SiteWatch_8{
+	font-weight:normal !important;
+	font-size:12px !important;
+	letter-spacing:1px;
+	color:#333 !important;
+}
+#SiteWatch_11{ 
+    position:relative; 
+    bottom:32px;
+}
+
+/* Article image insert */
+
+.article-img-middle{
+	margin:20px 0;
+}
+.article-img-middle img{
+	width:100%;
+	height:auto;
+	margin:10px 0;
+}
+.article-img-middle em{
+	padding:10px 0;	
+}
+.article-img-left,.article-img-right{
+	width:50%;
+}
+.article-img-right{
+	float:right;
+	margin:5px 0 0 20px;
+}
+.article-img-left{
+	float:left;
+	margin:5px 20px 0 0;
+}
+.article-img-middle img, .article-img-left img, .article-img-right img{
+	width:100%;
+	height:auto;
+}
+.article-img-left img, .article-img-right img{
+	margin:0 0 10px 0;
+}
+
+
+.black-text .article-labels .activity-label{
+    color:#222 !important;
+    border-color:#222 !important;
+}

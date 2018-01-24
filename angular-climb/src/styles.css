@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css'; 
 @import 'bootstrap_climb.css';
-@import 'styles_climb.css';
 
 @import 'https://fonts.googleapis.com/css?family=Play:400,700|Open+Sans:400,600,300italic';
 @import 'https://fonts.googleapis.com/css?family=Josefin+Slab:400,600';
@@ -37,3 +36,27 @@
       right: 0px;
       top: 0px;
   }
+
+  h1,h2,h3 {
+    color: #FFF
+  }
+  
+  h1,h2,h3,h4,em,.nav a,ul.share-buttons{
+    font-family: 'Josefin Slab',serif;
+    letter-spacing: .05em;
+    font-weight: 600
+  }
+  
+  em {
+    opacity: .6
+  }
+  
+  body {
+    font-family: 'Open Sans',sans-serif
+  }
+  .btn {
+    background-image: none;
+    border: none
+  }
+
+  
