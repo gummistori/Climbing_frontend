@@ -9,6 +9,7 @@ import { of } from 'rxjs/observable/of';
 
 import { ArticleDetails } from './articleDetails';
 import { FunctionCall } from '@angular/compiler';
+// import { basename } from 'path';
 
 export interface Tag {
   id: number;
@@ -22,27 +23,33 @@ interface AllData {
   tags: Tag[];
 }
 
+interface SearchResults {
+  articles: ArticleDetails[];
+}
 
 @Injectable()
 export class DataService {
+  private static data: AllData = null;
   public readonly ROOT_URL = 'http://new.climbing.is/';
   private jobs: any[] = [];
-  private data: AllData = null;
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
-    const dataValue = window.sessionStorage.getItem('data');
+    if (DataService.data !== null) {
+      return;
+    }
+    /*const dataValue = window.localStorage.getItem('data');
     if (dataValue) {
       this.data = JSON.parse(dataValue);
       return;
     }
-
+*/
     this.http.get<AllData>(this.ROOT_URL + 'getAll.php')
       .pipe(
         tap(heroes => this.log(`fetched all`)),
         catchError(this.handleError('getAll', null))
       ).subscribe(data => {
-        window.sessionStorage.setItem('data', JSON.stringify(data));
-        this.data = data;
+  //      window.localStorage.setItem('data', JSON.stringify(data));
+        DataService.data = data;
         for (let i = 0; i < this.jobs.length; i++) {
           this.jobs[i].f.call(this, this.jobs[i].a);
         }
@@ -51,12 +58,12 @@ export class DataService {
 
   getArticles(): Observable<ArticleDetails[]> {
     const f = function(observer){
-      observer.next(this.data.articles);
+      observer.next(DataService.data.articles);
       observer.complete();
     };
 
     return new Observable(observer => {
-      if (this.data !== null) {
+      if (DataService.data !== null) {
         f.call(this, observer);
         return;
       }
@@ -66,9 +73,9 @@ export class DataService {
 
   getArticle(id: number): Observable<ArticleDetails> {
     const f = function(observer) {
-      for (let i = 0; i < this.data.articles.length; i++) {
-        if (this.data.articles[i].id === id) {
-          observer.next(this.data.articles[i]);
+      for (let i = 0; i < DataService.data.articles.length; i++) {
+        if (DataService.data.articles[i].id === id) {
+          observer.next(DataService.data.articles[i]);
           break;
         }
       }
@@ -76,7 +83,7 @@ export class DataService {
     };
 
     return new Observable(observer => {
-      if (this.data !== null) {
+      if (DataService.data !== null) {
         f.call(this, observer);
         return;
       }
@@ -86,12 +93,12 @@ export class DataService {
 
   getTags(): Observable<Tag[]> {
     const f = function(observer){
-      observer.next(this.data.tags);
+      observer.next(DataService.data.tags);
       observer.complete();
     };
 
     return new Observable(observer => {
-      if (this.data !== null) {
+      if (DataService.data !== null) {
         f.call(this, observer);
         return;
       }
@@ -117,4 +124,28 @@ export class DataService {
   private log(message: string) {
     // this.messageService.add('HeroService: ' + message);
   }
+
+  InsertHit(articleId: number) {
+    console.log('inserting hit on artId: ' + articleId);
+//    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();
+    this.http.post(this.ROOT_URL + 'addHit.php',
+    {
+        'artId': articleId
+    })
+    .subscribe(
+        val => {
+            console.log('PUT call successful value returned in body', val);
+        },
+        response => {
+            console.log('PUT call in error', response);
+        },
+        () => {
+            console.log('The PUT observable is now completed.');
+        }
+    );
+  }
+/*
+  public searchResults(query: string) {
+    return AllData[0];
+  }*/
 }

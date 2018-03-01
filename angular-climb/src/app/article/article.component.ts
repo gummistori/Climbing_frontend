@@ -38,39 +38,41 @@ export class ArticleComponent implements OnInit {
         // console.log(this.id);
         this.data.getArticle(this.id).subscribe(data => {
 
-        this.articleDetails = data;
-        this.image = 'http://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
+          this.articleDetails = data;
+          this.image = 'http://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
 
-        this.isn93X = data.x;
-        this.isn93Y = data.y;
-        this.lat = data.lat;
-        this.lon = data.lon;
-        this.ready = true;
+          this.isn93X = data.x;
+          this.isn93Y = data.y;
+          this.lat = data.lat;
+          this.lon = data.lon;
+          this.ready = true;
 
-        if (!document.getElementById('SiteWatchLibrary') && this.isn93X !== null && this.isn93Y !== null) {
-          const script = document.createElement('script');
-          script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
-          script.id = 'SiteWatchLibrary';
-          const me = this;
-          script.onload = function() {
-            me.map();
-           // window.setTimeout(function(){ me.map(); }, 100);
-          };
-          document.body.appendChild( script );
-        }
-        if (!document.getElementById('GoogleMapLibrary') && this.lat !== null && this.lon !== null) {
-          const script = document.createElement('script');
-          script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
-          script.id = 'SiteWatchLibrary';
-          const me = this;
-          script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
-          document.body.appendChild( script );
+          if (!document.getElementById('SiteWatchLibrary') && this.isn93X !== null && this.isn93Y !== null) {
+            const script = document.createElement('script');
+            script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
+            script.id = 'SiteWatchLibrary';
+            const me = this;
+            script.onload = function() {
+              me.map();
+              // window.setTimeout(function(){ me.map(); }, 100);
+            };
+            document.body.appendChild( script );
+          }
+          if (!document.getElementById('GoogleMapLibrary') && this.lat !== null && this.lon !== null) {
+            const script = document.createElement('script');
+            script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+            script.id = 'SiteWatchLibrary';
+            const me = this;
+            script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
+            document.body.appendChild( script );
 
-        }
-        this.map();
-      // In a real app: dispatch action to load the details here.
-   });
-  });
+          }
+          this.map();
+          // insert a hit for the article
+          this.data.InsertHit(this.id);
+        // In a real app: dispatch action to load the details here.
+      });
+    });
   }
 
   textClass() {
