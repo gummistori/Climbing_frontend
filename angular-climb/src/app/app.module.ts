@@ -23,6 +23,7 @@ import { ArticleComponent } from './article/article.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { EpochDatePipe } from './epoch-date.pipe';
 import { ArticlesRandomImageComponent } from './articles.random.image/articles.random.image.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ArticlesRandomImageComponent } from './articles.random.image/articles.r
     ArticleComponent,
     GalleryComponent,
     EpochDatePipe,
-    ArticlesRandomImageComponent
+    ArticlesRandomImageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

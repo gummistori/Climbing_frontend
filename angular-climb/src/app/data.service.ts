@@ -91,6 +91,26 @@ export class DataService {
     });
   }
 
+  getFindResults(query: string): Observable<ArticleDetails[]> {
+    const f = function(observer) {
+      for (let i = 0; i < DataService.data.articles.length; i++) {
+        if (DataService.data.articles[i].id > 211) {
+          observer.next(DataService.data.articles[i]);
+          break;
+        }
+      }
+      observer.complete();
+    };
+
+    return new Observable(observer => {
+      if (DataService.data !== null) {
+        f.call(this, observer);
+        return;
+      }
+      this.jobs.push({f: f, a: observer});
+    });
+  }
+
   getTags(): Observable<Tag[]> {
     const f = function(observer){
       observer.next(DataService.data.tags);
@@ -144,8 +164,4 @@ export class DataService {
         }
     );
   }
-/*
-  public searchResults(query: string) {
-    return AllData[0];
-  }*/
 }
