@@ -1,3 +1,4 @@
+import { SearchComponent } from './search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
@@ -13,6 +14,7 @@ const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'Articles/:id/:name', component: ArticleComponent}
 , { path: 'Articles', component: ArticlesComponent}
 , { path: 'About', component: AboutComponent}
+, { path: 'Search', component: SearchComponent}
 , { path: '**', component: FrontComponent} // change this to 404
 ];
 

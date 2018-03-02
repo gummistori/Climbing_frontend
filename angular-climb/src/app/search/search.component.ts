@@ -7,14 +7,13 @@ import { DataService } from '../data.service';
 import { ArticleDetails } from '../articleDetails';
 
 
-
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
   providers: [ DataService ]
 })
-export class ArticlesComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   private allArticles: ArticleDetails[] = null;
   private searchedArticles: ArticleDetails[] = null;
@@ -25,14 +24,14 @@ export class ArticlesComponent implements OnInit {
     this.route.params.subscribe( params => console.log(params) );
    }
 
-  hasKeyword(key: string, art: ArticleDetails) {
-    if (art.title.indexOf(key) > 0
-        || art.allurtexti.indexOf(key) > 0) {
+  static hasKeyword(key: string, art: ArticleDetails) {
+    if (art.title.toLocaleLowerCase().indexOf(key) > 0
+        || art.allurtexti.toLocaleLowerCase().indexOf(key) > 0) {
       return true;
     }
 
     for (let i = 0; i < art.myndasida.length; i++) {
-      if (art.myndasida[i].description.indexOf(key) > 0) {
+      if (art.myndasida[i].description.toLocaleLowerCase().indexOf(key) > 0) {
         return true;
       }
     }
@@ -48,23 +47,22 @@ export class ArticlesComponent implements OnInit {
 
     const max = 10;
     const list = [];
-    let count = 0;
+    query = query.toLocaleLowerCase();
     if (this.tags === null || this.tags.length === 0) {
       for (let i = 0; i < this.allArticles.length; i++) {
         if (query !== '') {
-          if (this.allArticles[i].allurtexti.indexOf(query) > 0
-              || this.allArticles[i].title.indexOf(query) > 0) {
+          if (SearchComponent.hasKeyword(query, this.allArticles[i])) {
             list.push(this.allArticles[i]);
             console.log('art ' + this.allArticles[i].id);
-            count++;
           } else {
             console.log('Skipped art: ' + this.allArticles[i].id);
           }
+
         } else {
           list.push(this.allArticles[i]);
         }
 
-        if (count >= max) {
+        if (list.length >= max) {
           this.articles = list;
           return;
         }
@@ -103,7 +101,7 @@ export class ArticlesComponent implements OnInit {
       for (let t = 0; t < this.allArticles[i].tags.length; t++) {
         if (tags[this.allArticles[i].tags[t]]) {
           if (query !== '') {
-            if (this.hasKeyword(query, this.allArticles[i])) {
+            if (SearchComponent.hasKeyword(query, this.allArticles[i])) {
               list.push(this.allArticles[i]);
             }
           } else {
@@ -123,9 +121,10 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
 
+    const qryString = '';
     this.data.getArticles().subscribe(data => {
       this.allArticles = data;
-      this.filter();
+      this.filter(qryString.toLocaleLowerCase());
     });
 
     this.data.getTags().subscribe(data => {
