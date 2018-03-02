@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css'; 
+@import '~lightgallery/dist/css/lightgallery.min.css';
 @import 'bootstrap_climb.css';
 
 @import 'https://fonts.googleapis.com/css?family=Play:400,700|Open+Sans:400,600,300italic';
