@@ -10,12 +10,10 @@
   </div>
 </div>
 
-<div  id="gallery" style="position: fixed; width:100%; height: 100%; top: 0px; left: 0px; z-index: 9999999; max-width: 100%; max-height: 100%; background:black;" 
-*ngIf="Full">
-  <img style="margin-left: auto; margin-right:auto; display:block; max-width: 100%; max-height: 100%;transition: 1s ease-in-out;" 
+<div  id="gallery" style="position: fixed; width:100%; height: 100%; top: 0px; left: 0px; z-index: 9999999; max-width: 100%; max-height: 100%; background: rgba(0,0,0,0.9); white-space: nowrap; text-align: center;" *ngIf="Full">
+  <img style="margin-left: auto; margin-right:auto; margin-top: auto; display: inline-block; max-width: 100%; max-height: 100%;transition: 1s ease-in-out; vertical-align: middle;" 
     src="http://www.climbing.is/safetest/stormynd.php/{{art?.myndasida[FullIndex].file}}">
-    <span (click)="fullExit()" style="position: fixed; right:5px; top:5px;cursor: pointer;">&#10006;</span>
-    <span (click)="next()" style="position: fixed; right:5px; top:50px;cursor: pointer;">&#10006;</span>
-    <span (click)="prev()" style="position: fixed; left:5px; top:50px;cursor: pointer;">&#10006;</span>
+    <span (click)="fullExit()" style="position: fixed; right:5px; top:5px;cursor: pointer; padding: 20px;">&#10006;</span>
+    <span (click)="next()" style="position: fixed; right:5px; top:50px;cursor: pointer; padding: 20px;">&#10007;</span>
+    <span (click)="prev()" style="position: fixed; left:5px; top:50px;cursor: pointer; padding: 20px;">&#10008;</span>
 </div>
-<!-- href=""  -->
