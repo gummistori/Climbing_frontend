@@ -15,6 +15,7 @@ const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'Articles', component: ArticlesComponent}
 , { path: 'About', component: AboutComponent}
 , { path: 'Search', component: SearchComponent}
+, { path: 'Search/:queryString', component: SearchComponent}
 , { path: '**', component: FrontComponent} // change this to 404
 ];
 

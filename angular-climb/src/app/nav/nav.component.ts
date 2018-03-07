@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -6,12 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-
-  constructor() { }
+  searchString: string;
+  router: Router;
+  constructor(_router: Router) {
+    this.router = _router;
+    // this.searchString = 'f';
+  }
 
   public collapse = true;
 
   public showHide() {
     this.collapse = !this.collapse;
+  }
+
+  public onSubmit() {
+    this.router.navigate(['Search', this.searchString]);
   }
 }

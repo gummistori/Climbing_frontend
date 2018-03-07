@@ -2,7 +2,7 @@
     <!-- <div style="position: absolute; height: 1000px;"></div> -->
     <div class="container article-list-container">
       <div class="row">    
-        <div class="col-md-8 no-padd article-list">
+        <div class="col-md-12 no-padd article-list">
           <div id="greinalisti">
               <div class="banner banner-subcont vignette-small" *ngFor="let post of articles">
                 <a title="{{post.title}}" routerLink="/Articles/{{post.id}}/{{post.fyrirsognEng}}">
@@ -12,23 +12,6 @@
               </div>
           </div> 
         </div>
-        <div class="col-md-4 no-padd filter">
-          <div id="sidebar" class="panel panel-default hidden-xs hidden-sm affix-top" data-spy="affix">
-          
-          <div class="panel-heading"><h4>Sía</h4></div>
-          
-          <div class="list-group no-padd panel-body">
-              <div class="checkbox list-group-item" *ngFor="let item of tags">
-                <label>
-                  <input type="checkbox"  [(ngModel)]="item.checked" (change)="filter()">
-                  <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                  <span class="go-left">{{ item.name }}</span>
-                </label>
-              </div>
-          </div>
-          </div>
-          
-          </div>
       </div>
     
     </div>

@@ -1,21 +1,22 @@
-<div class="container language-container">
+<!--
+    <div class="container language-container">
     <div class="language">
         <a href="#"><i class="flag-icon flag-icon-gb"></i></a>
         <a href="#" class="lang-active"><i class="flag-icon flag-icon-is"></i></a>
     </div>
 </div>
-    
-    
-    <div class="container language-container">
-        <div class="language">
-            <a href="javascript:setCookie('www-cli', 'en', exp);" >
-                <i class="flag-icon flag-icon-gb"></i>
-            </a>
-            <a href="javascript:setCookie('www-cli', 'is', exp);" class="lang-active">
-                <i class="flag-icon flag-icon-is"></i>
-            </a>
-        </div>
+
+<div class="container language-container">
+    <div class="language">
+        <a href="javascript:setCookie('www-cli', 'en', exp);" >
+            <i class="flag-icon flag-icon-gb"></i>
+        </a>
+        <a href="javascript:setCookie('www-cli', 'is', exp);" class="lang-active">
+            <i class="flag-icon flag-icon-is"></i>
+        </a>
     </div>
+</div>
+-->
 
 <style>
     .logo-container{
@@ -50,25 +51,14 @@
                 Um okkur
             </a>
             </li>
-            <li><a href="#">xMap</a></li>
-            <li class="hidden-xs"><a href="#"></a></li>
-            <div class="searchbox-container">
-                <form class="searchbox" action="/leit" method="post">
-                    <input type="string" placeholder="Search......" name="search" class="searchbox-input" required>
-                    <input type="submit" class="searchbox-submit" value="GO">
-                    <span class="">
-                        <i class="fa fa-search"></i>
-                    </span>
+            <!--<li><a href="#">xMap</a></li>-->
+            <li [routerLinkActive]="['active']">
+                <form #f="ngForm" (ngSubmit)="onSubmit()">
+                    <input [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}" id="searchString" style="background: none; border-radius: 10px; border-color: rgb(90,90,90); margin-top: 13px;" type="text" placeholder="Leitarorð..." />
                 </form>
-            </div>
-
-            <li class="hidden-lg hidden-sm hidden-md">
-                <div class="mobile-search">    
-                    <input type="search" name="string" class="form-control" placeholder="Leita...">
-                </div>
             </li>
+            
             </ul>
         </div>
-    
     </div>
 </nav>

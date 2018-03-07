@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
 
   private allArticles: ArticleDetails[] = null;
   private searchedArticles: ArticleDetails[] = null;
+  private queryString: string;
   articles: ArticleDetails[];
   tags: Tag[] = null;
 
@@ -45,7 +46,7 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    const max = 10;
+    const max = 100;
     const list = [];
     query = query.toLocaleLowerCase();
     if (this.tags === null || this.tags.length === 0) {
@@ -120,18 +121,19 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const qryString = params['queryString'];
+      this.data.getArticles().subscribe(data => {
+        this.allArticles = data;
+        this.filter(qryString.toLocaleLowerCase());
+      });
 
-    const qryString = '';
-    this.data.getArticles().subscribe(data => {
-      this.allArticles = data;
-      this.filter(qryString.toLocaleLowerCase());
-    });
-
-    this.data.getTags().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        data[i].checked = false;
-      }
-      this.tags = data;
+      this.data.getTags().subscribe(data => {
+        for (let i = 0; i < data.length; i++) {
+          data[i].checked = false;
+        }
+        this.tags = data;
+      });
     });
   }
 

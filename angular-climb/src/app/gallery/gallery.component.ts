@@ -92,12 +92,14 @@ export class GalleryComponent implements  AfterViewInit  {
     this.FullIndex = i;
     this.Full = true;
     setFullScreen(true);
+    document.body.style.overflow = 'hidden';
     // element. webkitRequestFullscreen()
   }
 
   fullExit() {
     setFullScreen(false);
     this.Full = false;
+    document.body.style.overflow = 'scroll';
   }
   next() {
     if (this.FullIndex === this.art.myndasida.length - 1) {
