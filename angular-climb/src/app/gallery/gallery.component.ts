@@ -70,6 +70,8 @@ export class GalleryComponent implements  AfterViewInit  {
 
   Full = false;
   FullIndex = 0;
+  FullIndex1 = 0;
+  FullIndexMinus1 = 0;
 
   constructor() {
   }
