@@ -38,25 +38,27 @@
   }
 
   h1,h2,h3 {
-    color: #FFF
+    color: #FFF;
   }
   
   h1,h2,h3,h4,em,.nav a,ul.share-buttons{
     font-family: 'Josefin Slab',serif;
     letter-spacing: .05em;
-    font-weight: 600
+    font-weight: 600;
   }
   
   em {
-    opacity: .6
+    opacity: .6;
   }
   
   body {
-    font-family: 'Open Sans',sans-serif
+    font-family: 'Open Sans',sans-serif;
+    overflow-x: hidden;
+
   }
   .btn {
     background-image: none;
-    border: none
+    border: none;
   }
 
   
