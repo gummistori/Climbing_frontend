@@ -26,7 +26,7 @@
   <div class="article-text-container" [ngClass]="cssClasses">
       <div class="article-labels">
         <!-- ADD TAGS HERE -->
-        <span class="activity-label" *ngFor="let tag of articleDetails?.tags">{{ tag }}</span>
+        <span class="activity-label" *ngFor="let tag of articleDetails?.tags">{{ this.getTag(tag) }}</span>
         
       </div>
     <button  id="switch-color" data-toggle="tooltip" data-placement="top"  (click)="textClass()" title="Breyta lit á texta">

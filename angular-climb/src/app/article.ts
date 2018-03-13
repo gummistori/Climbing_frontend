@@ -1,3 +1,5 @@
+import { Tag } from './data.service';
+
 export interface Article {
     id: number;
     title: string;

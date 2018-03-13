@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { ArticleDetails, getRandomImage } from '../articleDetails';
 import { debug } from 'util';
+import { Tag } from './../data.service';
 
 declare var SWMap: any;
 declare var google: any;
@@ -27,6 +28,7 @@ export class ArticleComponent implements OnInit {
   textColor = 1;
   cssClasses = {'text-white': true
   , 'text-black': false};
+  tags: Tag[] = null;
 
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
@@ -73,6 +75,13 @@ export class ArticleComponent implements OnInit {
         // In a real app: dispatch action to load the details here.
       });
     });
+
+    this.data.getTags().subscribe(data => {
+      for (let i = 0; i < data.length; i++) {
+        data[i].checked = false;
+      }
+      this.tags = data;
+    });
   }
 
   textClass() {
@@ -84,6 +93,11 @@ export class ArticleComponent implements OnInit {
       , 'text-black': false};
     }
     this.textColor += 1;
+  }
+
+  getTag(tagId: number) {
+
+    return this.data.getTagName(tagId);
   }
   map() {
     if (!this.ready) {
