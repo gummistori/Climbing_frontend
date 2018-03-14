@@ -1,3 +1,4 @@
+// import { DataService } from './data.service';
 import { Injectable, Inject } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -20,7 +21,7 @@ export interface Tag {
 
 interface AllData {
   articles: ArticleDetails[];
-  tags: Tag[];
+  tags: number[];
 }
 
 interface SearchResults {
@@ -89,6 +90,19 @@ export class DataService {
       }
       this.jobs.push({f: f, a: observer});
     });
+  }
+
+  getTagName(id: number): string {
+    let tagList: Tag[];
+    this.getTags().subscribe(tags => {
+      tagList = tags as Tag[];
+    });
+
+    for (let i = 0; i < DataService.data.tags.length; i++) {
+      if (tagList[i].id === id) {
+        return tagList[i].name;
+      }
+    }
   }
 
   getFindResults(query: string): Observable<ArticleDetails[]> {

@@ -1,4 +1,5 @@
 import { GalleryItem } from './galleryItem';
+import { Tag } from './data.service';
 
 export interface ArticleDetails {
     id: number;
