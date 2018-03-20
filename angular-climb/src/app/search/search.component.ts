@@ -22,7 +22,9 @@ export class SearchComponent implements OnInit {
   tags: Tag[] = null;
 
   constructor(private route: ActivatedRoute, private data: DataService) {
-    this.route.params.subscribe( params => console.log(params) );
+    this.route.params.subscribe( params => {
+      // console.log(params);
+    });
    }
 
   static hasKeyword(key: string, art: ArticleDetails) {
@@ -54,9 +56,9 @@ export class SearchComponent implements OnInit {
         if (query !== '') {
           if (SearchComponent.hasKeyword(query, this.allArticles[i])) {
             list.push(this.allArticles[i]);
-            console.log('art ' + this.allArticles[i].id);
+            // console.log('art ' + this.allArticles[i].id);
           } else {
-            console.log('Skipped art: ' + this.allArticles[i].id);
+            // console.log('Skipped art: ' + this.allArticles[i].id);
           }
 
         } else {
@@ -85,15 +87,7 @@ export class SearchComponent implements OnInit {
         allSame = false;
       }
     }
-/*
-    if (allSame) {
-      for (let i = 0; i < max; i++) {
-        list.push(this.allArticles[i]);
-      }
-      this.articles = list;
-      return;
-    }
-*/
+
     for (let i = 0; i < this.allArticles.length; i++) {
       if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0) {
         continue;
@@ -126,14 +120,9 @@ export class SearchComponent implements OnInit {
       this.data.getArticles().subscribe(data => {
         this.allArticles = data;
         this.filter(qryString.toLocaleLowerCase());
+        console.log('onInit: ' + qryString);
       });
 
-      this.data.getTags().subscribe(data => {
-        for (let i = 0; i < data.length; i++) {
-          data[i].checked = false;
-        }
-        this.tags = data;
-      });
     });
   }
 
