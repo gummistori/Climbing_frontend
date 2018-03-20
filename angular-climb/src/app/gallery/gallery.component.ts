@@ -68,6 +68,7 @@ export class GalleryComponent implements  AfterViewInit  {
 
   @Input() art: ArticleDetails;
 
+  touchstartObject: {x: number, y: number} = null;
   Full = false;
   FullIndex = 0;
   FullIndexOld = 0;
@@ -91,6 +92,40 @@ export class GalleryComponent implements  AfterViewInit  {
       case 37: this.prev(); break;
       case 27: this.fullExit(); break;
     }
+  }
+
+  touchstart(event) {
+    // console.log('touchStart', event);
+    if (this.touchstartObject == null) {
+      this.touchstartObject = { x: event.touches[0].clientX,  y: event.touches[0].clientY };
+    }
+
+    event.preventDefault();
+    return true;
+  }
+
+  touchmove(event) {
+  //  console.log('touchmove');
+    if (this.touchstartObject != null) {
+      const diffX = this.touchstartObject.x - event.touches[0].clientX;
+      if (diffX > 100) {
+        this.touchstartObject = null;
+        this.next();
+      }
+
+      if (diffX < -100) {
+        this.touchstartObject = null;
+        this.prev();
+      }
+    }
+    event.preventDefault();
+    return true;
+  }
+
+  touchend(event) {
+//    console.log('touchend');
+    event.preventDefault();
+    return true;
   }
 
   fullScreen(i) {
