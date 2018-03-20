@@ -120,7 +120,7 @@ export class SearchComponent implements OnInit {
       this.data.getArticles().subscribe(data => {
         this.allArticles = data;
         this.filter(qryString.toLocaleLowerCase());
-        console.log('onInit: ' + qryString);
+        // console.log('onInit: ' + qryString);
       });
 
     });
