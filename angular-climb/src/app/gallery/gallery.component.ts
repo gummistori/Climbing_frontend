@@ -2,6 +2,8 @@ import { element } from 'protractor';
 import { ArticleDetails } from './../articleDetails';
 
 import { Component,  AfterViewInit , Input, HostListener, ElementRef } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
+
 
 // import { lightgallery } from './../../../node_modules/angular-lightgallery';
 
@@ -77,7 +79,10 @@ export class GalleryComponent implements  AfterViewInit  {
   FullIndex2 = 0;
   FullIndexMinus2 = 0;
 
-  constructor() {
+  constructor(location: PlatformLocation) {
+    location.onPopState(() => {
+      this.fullExit();
+    });
   }
 
   ngAfterViewInit() {
@@ -144,7 +149,7 @@ export class GalleryComponent implements  AfterViewInit  {
   fullExit() {
     setFullScreen(false);
     this.Full = false;
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = 'scrollY';
   }
   nextValue(value) {
     if (value === this.art.myndasida.length - 1) {
