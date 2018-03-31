@@ -8,6 +8,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { FrontComponent } from './front/front.component';
 import { ArticleComponent } from './article/article.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { GalleryImageComponent } from './gallery.image/gallery.image.component';
 
 const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'Articles/:id', component: ArticleComponent}
@@ -16,6 +17,7 @@ const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'About', component: AboutComponent}
 , { path: 'Search', component: SearchComponent}
 , { path: 'Search/:queryString', component: SearchComponent}
+, { path: 'ImageFull/:id/:image', component: GalleryImageComponent}
 , { path: '**', component: FrontComponent} // change this to 404
 ];
 
