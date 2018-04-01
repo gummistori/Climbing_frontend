@@ -3,6 +3,7 @@ import { Component, OnInit, AfterViewInit , Input, HostListener, ElementRef } fr
 import { PlatformLocation, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { timeout } from 'rxjs/operators';
 
 interface FsDocument extends HTMLDocument {
   mozFullScreenElement?: Element;
@@ -65,7 +66,7 @@ export class GalleryImageComponent implements OnInit {
 
   constructor(private location: Location, private route: ActivatedRoute, private data: DataService, platFromLocation: PlatformLocation) {
     platFromLocation.onPopState(() => {
-      this.fullExit();
+     // this.fullExit();
     });
   }
 
@@ -100,6 +101,9 @@ export class GalleryImageComponent implements OnInit {
 
   back() {
     this.location.back();
+    setTimeout(() => {
+      setFullScreen(false);
+    }, 150);
   }
 
   touchstart(event) {
