@@ -62,10 +62,8 @@ export function setFullScreen(full: boolean): void {
 })
 export class GalleryImageComponent implements OnInit {
 
-
-
-  constructor(private location: Location, private route: ActivatedRoute, private data: DataService, platFromLocation: PlatformLocation) {
-    platFromLocation.onPopState(() => {
+  constructor(private location: Location, private route: ActivatedRoute, private data: DataService, platformLocation: PlatformLocation) {
+    platformLocation.onPopState(() => {
      // this.fullExit();
     });
   }
@@ -148,29 +146,42 @@ export class GalleryImageComponent implements OnInit {
     this.FullIndex2 = this.nextValue(i, 2);
     this.FullIndexMinus2 = this.prevValue(i, 2);
     this.Full = true;
+
     setFullScreen(true);
 // document.body.style.overflow = 'hidden';
     // element. webkitRequestFullscreen()
   }
 
   fullExit() {
+    if (this.Full === true) {
+      this.location.back();
+    }
     setFullScreen(false);
     this.Full = false;
   //  document.body.style.overflow = 'scrollY';
   }
+
   nextValue(value, i = 1) {
     return (value + 1 * i) % this.art.myndasida.length;
   }
+
   prevValue(value, i = 1) {
     return (value - 1 * i) % this.art.myndasida.length;
   }
+
   next() {
     this.FullIndexOld = this.FullIndex;
-    setTimeout(() => { document.getElementById('newImage').className = 'image'; }, 500);
+    setTimeout(() => {
+      document.getElementById('newImage').className = 'image';
+    }, 500);
+    // this.setNewImageSize();
     document.getElementById('newImage').className = 'image nextShow';
 
-    setTimeout(() => { document.getElementById('oldImage').className = 'hide'; }, 500);
+    setTimeout(() => {
+      document.getElementById('oldImage').className = 'hide';
+    }, 500);
     document.getElementById('oldImage').className = 'image nextHide';
+    // this.setOldImageSize();
 
     this.FullIndex = this.nextValue(this.FullIndex);
     this.FullIndex1 = this.nextValue(this.FullIndex1);
@@ -178,12 +189,20 @@ export class GalleryImageComponent implements OnInit {
     this.FullIndex2 = this.nextValue(this.FullIndex2);
     this.FullIndexMinus2 = this.nextValue(this.FullIndexMinus2);
   }
+
   prev() {
     this.FullIndexOld = this.FullIndex;
-    setTimeout(() => { document.getElementById('newImage').className = 'image'; }, 500);
+    setTimeout(() => {
+      document.getElementById('newImage').className = 'image';
+    }, 500);
+    // this.setNewImageSize();
     document.getElementById('newImage').className = 'image prevShow';
 
-    setTimeout(() => { document.getElementById('oldImage').className = 'hide'; }, 500);
+    setTimeout(() => {
+      document.getElementById('oldImage').className = 'hide';
+    }, 500);
+    // this.setOldImageSize();
+
     document.getElementById('oldImage').className = 'image prevHide';
     this.FullIndex = this.prevValue(this.FullIndex);
     this.FullIndex1 = this.prevValue(this.FullIndex1);
@@ -192,5 +211,25 @@ export class GalleryImageComponent implements OnInit {
     this.FullIndexMinus2 = this.prevValue(this.FullIndexMinus2);
   }
 
+  setNewImageSize() {
+    let scrSize: number;
+    let imgSize: number;
+    let topMargin: number;
 
+    scrSize = window.innerHeight;
+    imgSize = document.getElementById('imgNew').offsetHeight;
+    topMargin = Math.abs(scrSize - imgSize) / 2;
+    document.getElementById('newImage').style.top = topMargin + 'px';
+  }
+
+  setOldImageSize() {
+    let scrSize: number;
+    let imgSize: number;
+    let topMargin: number;
+
+    scrSize = window.innerHeight;
+    imgSize = document.getElementById('imgOld').offsetHeight;
+    topMargin = Math.abs(scrSize - imgSize) / 2;
+    document.getElementById('oldImage').style.top = topMargin + 'px';
+  }
 }
