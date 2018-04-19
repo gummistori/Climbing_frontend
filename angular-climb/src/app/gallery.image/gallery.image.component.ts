@@ -162,11 +162,11 @@ export class GalleryImageComponent implements OnInit {
   }
 
   nextValue(value, i = 1) {
-    return (value + 1 * i) % this.art.myndasida.length;
+    return (value + i) % this.art.myndasida.length;
   }
 
   prevValue(value, i = 1) {
-    return (value - 1 * i) % this.art.myndasida.length;
+    return (value - i + this.art.myndasida.length) % this.art.myndasida.length;
   }
 
   next() {
