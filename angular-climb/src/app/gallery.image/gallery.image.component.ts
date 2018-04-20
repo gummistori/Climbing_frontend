@@ -182,6 +182,7 @@ export class GalleryImageComponent implements OnInit {
     }, 500);
     document.getElementById('oldImage').className = 'image nextHide';
     // this.setOldImageSize();
+    document.getElementById('newImage').style.backgroundSize = 'contain';
 
     this.FullIndex = this.nextValue(this.FullIndex);
     this.FullIndex1 = this.nextValue(this.FullIndex1);
