@@ -30,6 +30,8 @@ export class ArticleComponent implements OnInit {
   , 'text-black': false};
   tags: Tag[] = null;
 
+  hasVideo = false;
+
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit() {
@@ -73,6 +75,9 @@ export class ArticleComponent implements OnInit {
           // insert a hit for the article
           this.data.InsertHit(this.id);
         // In a real app: dispatch action to load the details here.
+
+
+        this.hasVideo = this.articleDetails.videoLink != null;
       });
     });
 

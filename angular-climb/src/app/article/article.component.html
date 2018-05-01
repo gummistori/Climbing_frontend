@@ -111,4 +111,7 @@
 </div><!--end of .row-->
 </div><!--end of .container-->
 
+<!--	################		Video		##############	-->
+<app-articlevideo *ngIf="this.hasVideo" [art]="articleDetails"></app-articlevideo>
+
 <app-gallery [id]="id" [art]="articleDetails"></app-gallery>

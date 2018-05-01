@@ -11,6 +11,7 @@ export interface ArticleDetails {
     frettaritari: string;
     dagsetning: string;
     videoEmbed: string;
+    videoLink: string;
     flightTrack: string;
     x: number;
     y: number;

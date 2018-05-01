@@ -25,6 +25,8 @@ import { EpochDatePipe } from './epoch-date.pipe';
 import { ArticlesRandomImageComponent } from './articles.random.image/articles.random.image.component';
 import { SearchComponent } from './search/search.component';
 import { GalleryImageComponent } from './gallery.image/gallery.image.component';
+import { ArticleVideoComponent } from './article.video/article.video.component';
+import { SafePipe } from './app.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { GalleryImageComponent } from './gallery.image/gallery.image.component';
     EpochDatePipe,
     ArticlesRandomImageComponent,
     SearchComponent,
-    GalleryImageComponent
+    GalleryImageComponent,
+    ArticleVideoComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
