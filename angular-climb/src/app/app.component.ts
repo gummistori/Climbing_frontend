@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewEncapsulation, PipeTransform, Pipe } from '@angular/core';
 import { Title } from '@angular/platform-browser';
