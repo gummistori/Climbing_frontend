@@ -1,2 +1,2 @@
 # Angular-Climb
-climbing.is in Angular 5
+climbing.is fontend in Angular 5
