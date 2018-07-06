@@ -64,7 +64,7 @@ export class ArticleComponent implements OnInit {
           }
           if (!document.getElementById('GoogleMapLibrary') && this.lat !== null && this.lon !== null) {
             const script = document.createElement('script');
-            script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false';
+            script.src = 'https://maps.googleapis.com/maps/api/js';
             script.id = 'SiteWatchLibrary';
             const me = this;
             script.onload = function() {  window.setTimeout(function(){ me.map(); }, 100); };
@@ -142,25 +142,14 @@ export class ArticleComponent implements OnInit {
         mapTypeId: google.maps.MapTypeId.TERRAIN,
         center: new google.maps.LatLng(this.lat, this.lon),
         styles: [
-          {'featureType': 'all',
-          'elementType': 'all',
-          'stylers': [{'saturation': '20'}]},
-          {'featureType': 'administrative',
-          'elementType': 'labels',
-          'stylers': [{'visibility': 'on'}]},
-          {'featureType': 'administrative.province',
-          'elementType': 'all',
-          'stylers': [{'visibility': 'off'}]},
-          {'featureType': 'administrative.province',
-          'elementType': 'labels',
-          'stylers': [{'visibility': 'off'}]},
-          {'featureType': 'administrative.locality',
-          'elementType': 'all', 'stylers': [{'visibility': 'on'}]},
+          {'featureType': 'all', 'elementType': 'all', 'stylers': [{'saturation': '20'}]},
+          {'featureType': 'administrative', 'elementType': 'labels', 'stylers': [{'visibility': 'on'}]},
+          {'featureType': 'administrative.province', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'administrative.province', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]},
+          {'featureType': 'administrative.locality', 'elementType': 'all', 'stylers': [{'visibility': 'on'}]},
           {'featureType': 'administrative.neighborhood', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
           {'featureType': 'administrative.land_parcel', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
-          {'featureType': 'landscape', 'elementType': 'all', 'stylers': [{'saturation': '-47'},
-          {'lightness': '0'},
-          {'hue': '#00ffcd'}]},
+          {'featureType': 'landscape', 'elementType': 'all', 'stylers': [{'saturation': '-47'}, {'lightness': '0'}, {'hue': '#00ffcd'}]},
           {'featureType': 'landscape.man_made', 'elementType': 'all', 'stylers': [{'visibility': 'off'}]},
           {'featureType': 'landscape.natural.terrain', 'elementType': 'all', 'stylers': [{'lightness': '0'}]},
           {'featureType': 'poi', 'elementType': 'all', 'stylers': [{'lightness': '0'}, {'visibility': 'off'}, {'saturation': '-82'}]},
