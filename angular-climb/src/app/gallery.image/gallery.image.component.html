@@ -13,6 +13,6 @@
   <span (click)="next()" style="position: fixed; right:5px; top:50%;cursor: pointer; padding: 20px; font-size: 2em">></span>
   <span (click)="prev()" style="position: fixed; left:5px; top:50%;cursor: pointer; padding: 20px; font-size: 2em"><</span>
   <div style="position:absolute; font-size: 1.4em; width: 100%; bottom: 15px; text-align: center;">
-    <span style="background-color: rgba(0, 0, 0, 0.4); padding-left: 4px; padding-right: 4px;">{{art?.myndasida[FullIndex].description}}</span>
+    <span style="background-color: rgba(0, 0, 0, 0.4); padding-left: 4px; padding-right: 4px;">{{art?.myndasida[FullIndex].description}} &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-camera"></span> {{art?.myndasida[FullIndex].photographer}}</span>
   </div>
 </div>
