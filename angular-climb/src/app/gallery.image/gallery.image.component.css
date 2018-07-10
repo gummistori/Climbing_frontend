@@ -8,7 +8,7 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    background-size: contain !important;
+    /*background-size: contain !important;*/
 }
 .image img {
     margin-left: auto;
