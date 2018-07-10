@@ -1,6 +1,24 @@
   
     <!-- ## List content ## -->
     <!-- <div style="position: absolute; height: 1000px;"></div> -->
+    <div class="visible-xs visible-sm panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading" (click)="ToggleFilter()">
+          <h4 class="panel-title">Sía</h4>
+        </div>
+        <div id="collapse1" class="panel-collapse" [ngClass]="cssCollapse">
+          <div class="list-group no-padd panel-body">
+            <div class="checkbox list-group-item" *ngFor="let item of tags">
+              <label>
+                <input type="checkbox"  [(ngModel)]="item.checked" (change)="filter('', true)">
+                <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                <span class="go-left">{{ item.name }}</span>
+              </label>
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
     <div class="container article-list-container">
       <div class="row">    
         <div class="col-md-8 no-padd article-list">

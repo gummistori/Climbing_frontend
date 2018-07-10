@@ -20,10 +20,19 @@ export class ArticlesComponent implements OnInit {
   private searchedArticles: ArticleDetails[] = null;
   articles: ArticleDetails[];
   tags: Tag[] = null;
+  cssCollapse = 'collapse';
 
   constructor(private route: ActivatedRoute, private data: DataService) {
     this.route.params.subscribe( params => console.log(params) );
    }
+
+  ToggleFilter() {
+    if (this.cssCollapse === '') {
+      this.cssCollapse = 'collapse';
+    } else {
+    this.cssCollapse = '';
+   }
+  }
 
   hasKeyword(key: string, art: ArticleDetails) {
     if (art.title.indexOf(key) > 0
@@ -40,8 +49,12 @@ export class ArticlesComponent implements OnInit {
     return false;
   }
 
-  filter(query: string = '') {
+  filter(query: string = '', hideFilter: boolean = false) {
   ///  debugger;
+    if (hideFilter) {
+      this.cssCollapse = 'collapse';
+    }
+
     if (this.allArticles === null) {
       return;
     }
