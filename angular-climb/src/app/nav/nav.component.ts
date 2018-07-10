@@ -21,6 +21,10 @@ export class NavComponent {
     this.collapse = !this.collapse;
   }
 
+  public hide() {
+    this.collapse = true;
+  }
+
   public onSubmit() {
     this.router.navigate(['Search', this.searchString]);
   }

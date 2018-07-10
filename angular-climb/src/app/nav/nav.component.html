@@ -44,13 +44,9 @@
         <div class="navbar-collapse main-nav" [class.collapse]="collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
             
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Heim</a></li>
-            <li [routerLinkActive]="['active']"><a routerLink="/Articles">Greinar</a></li>
-            <li [routerLinkActive]="['active']">
-            <a routerLink="/About">
-                Um okkur
-            </a>
-            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/" (click)="hide()">Heim</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/Articles" (click)="hide()">Greinar</a></li>
+            <li [routerLinkActive]="['active']"><a (click)="hide()" routerLink="/About">Um okkur</a></li>
             <!--<li><a href="#">xMap</a></li>-->
             <li [routerLinkActive]="['active']">
                 <form #f="ngForm" (ngSubmit)="onSubmit()">
