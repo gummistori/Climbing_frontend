@@ -30,7 +30,7 @@ interface SearchResults {
 @Injectable()
 export class DataService {
   private static data: AllData = null;
-  public readonly ROOT_URL = 'http://new.climbing.is/';
+  public readonly ROOT_URL = 'http://www.climbing.is/';
   private jobs: any[] = [];
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
@@ -160,10 +160,16 @@ export class DataService {
 
   InsertHit(articleId: number) {
     console.log('inserting hit on artId: ' + articleId);
+    const postData = new FormData();
+    postData.append('artId', articleId.toString());
+
+    this.http.post(this.ROOT_URL + 'addHit.php', postData).subscribe();
+  }
+
 //    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();
-    this.http.post(this.ROOT_URL + 'addHit.php',
+/*    this.http.post<any>(this.ROOT_URL + 'addHit.php',
     {
-        'artId': articleId
+        'artId': 44
     })
     .subscribe(
         val => {
@@ -176,5 +182,6 @@ export class DataService {
             console.log('The PUT observable is now completed.');
         }
     );
+    */
   }
-}
+
