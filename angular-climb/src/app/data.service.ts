@@ -30,7 +30,7 @@ interface SearchResults {
 @Injectable()
 export class DataService {
   private static data: AllData = null;
-  public readonly ROOT_URL = 'http://www.climbing.is/';
+  public readonly ROOT_URL = 'https://www.climbing.is/';
   private jobs: any[] = [];
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
@@ -159,7 +159,7 @@ export class DataService {
   }
 
   InsertHit(articleId: number) {
-    console.log('inserting hit on artId: ' + articleId);
+    // console.log('inserting hit on artId: ' + articleId);
     const postData = new FormData();
     postData.append('artId', articleId.toString());
 

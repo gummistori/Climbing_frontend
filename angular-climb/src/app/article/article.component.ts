@@ -42,7 +42,7 @@ export class ArticleComponent implements OnInit {
         this.data.getArticle(this.id).subscribe(data => {
 
           this.articleDetails = data;
-          this.image = 'http://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
+          this.image = 'https://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
 
           this.isn93X = data.x;
           this.isn93Y = data.y;
