@@ -166,6 +166,13 @@ export class DataService {
     this.http.post(this.ROOT_URL + 'addHit.php', postData).subscribe();
   }
 
+  InsertFrontHit() {
+    const postData = new FormData();
+    postData.append('front', 'hit');
+
+    this.http.post(this.ROOT_URL + 'addFrontVisit.php', postData).subscribe();
+  }
+
 //    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();
 /*    this.http.post<any>(this.ROOT_URL + 'addHit.php',
     {

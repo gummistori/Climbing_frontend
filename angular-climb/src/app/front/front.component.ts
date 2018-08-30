@@ -27,5 +27,7 @@ export class FrontComponent implements OnInit {
       }
       this.articles = list;
     });
+
+    this.data.InsertFrontHit();
   }
 }
