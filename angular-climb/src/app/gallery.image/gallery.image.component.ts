@@ -15,7 +15,7 @@ interface FsDocument extends HTMLDocument {
 export function isFullScreen(): boolean {
   const fsDoc = <FsDocument> document;
 
-  return !!(fsDoc.fullscreenElement || fsDoc.mozFullScreenElement || fsDoc.webkitFullscreenElement || fsDoc.msFullscreenElement);
+  return !!(/*fsDoc.fullscreenElement || */fsDoc.mozFullScreenElement || /*fsDoc.webkitFullscreenElement ||*/ fsDoc.msFullscreenElement);
 }
 
 interface FsDocumentElement extends HTMLElement {
@@ -35,8 +35,8 @@ export function toggleFullScreen(): void {
       fsDocElem.msRequestFullscreen();
     } else if (fsDocElem.mozRequestFullScreen) {
       fsDocElem.mozRequestFullScreen();
-    } else if (fsDocElem.webkitRequestFullscreen) {
-      fsDocElem.webkitRequestFullscreen();
+    // } else if (fsDocElem.webkitRequestFullscreen) {
+    //   fsDocElem.webkitRequestFullscreen();
     }
   } else if (fsDoc.exitFullscreen) {
     fsDoc.exitFullscreen();
@@ -44,8 +44,8 @@ export function toggleFullScreen(): void {
     fsDoc.msExitFullscreen();
   } else if (fsDoc.mozCancelFullScreen) {
     fsDoc.mozCancelFullScreen();
-  } else if (fsDoc.webkitExitFullscreen) {
-    fsDoc.webkitExitFullscreen();
+  // } else if (fsDoc.webkitExitFullscreen) {
+  //   fsDoc.webkitExitFullscreen();
   }
 }
 
