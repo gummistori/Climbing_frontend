@@ -2,7 +2,7 @@
   <div class="container no-padd">
     <div class="banner banner-subcont vignette">
   
-      <img [src]="image" class="article-main-image" width="100%"/>
+      <img [src]="image" class="article-head-image" width="100%"/>
       <h2>
         <span>{{ articleDetails?.title }}</span>
         <em class="banner-em">Skrifað {{ articleDetails?.dagsetning | epochDate |date: 'yyyy-MM-dd' }}</em>
@@ -31,7 +31,7 @@
 </div>
 
 <!-- ### Side bar ###	-->
- 
+
 <div class="col-md-4 no-padd">
     
   <!-- Mini map  -->
@@ -40,7 +40,7 @@
   
   <div class="panel-heading"><h4>Staðsetning</h4></div>
   
-  <div class="panel-body no-padd">
+  <div class="panel-body no-padd" style="padding: 0px;">
     <!-- Google map -->
 
     <div id="map" style="height: 250px;"></div>

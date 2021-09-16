@@ -2,7 +2,7 @@
   <div class="container no-padd">
     <div class="banner banner-subcont vignette" *ngFor="let post of articles | slice:0:1">
       <a title="{{post.article.title}}" routerLink="/Articles/{{post.article.id}}">
-      <img src="https://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
+      <img src="https://www.climbing.is/listPic.php/{{post.image}}" class="article-head-image" style="box-sizing: unset;" width="100%"/>
       <h2><span>{{ post.article.title }}</span><em class="banner-em">{{ post.article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h2>
       </a>
     </div>
@@ -14,7 +14,7 @@
 
     <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont" *ngFor="let post of articles | slice:1:5; let i = index;" style="padding-left: 0px; padding-right: 0px;">
       <a title="{{post.article.title}}" routerLink="Articles/{{post.article.id}}" >
-        <img src="https://www.climbing.is/listPic.php/{{post.image}}" class="article-main-image" width="100%"/>
+        <img src="https://www.climbing.is/listPic.php/{{post.image}}" class="article-head-image" width="100%"/>
         <h4><span>{{ post.article.title }}</span><em>{{ post.article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h4>
       </a>
     </div>

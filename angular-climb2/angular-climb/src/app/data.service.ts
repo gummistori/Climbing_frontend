@@ -75,6 +75,7 @@ export class DataService {
   getArticle(id: number): Observable<ArticleDetails> {
     // tslint:disable-next-line:only-arrow-functions
     const f = function(observer) {
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < DataService.data.articles.length; i++) {
         if (DataService.data.articles[i].id === id) {
           observer.next(DataService.data.articles[i]);
@@ -107,7 +108,9 @@ export class DataService {
   }
 
   getFindResults(query: string): Observable<ArticleDetails[]> {
+    // tslint:disable-next-line:only-arrow-functions
     const f = function(observer) {
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < DataService.data.articles.length; i++) {
         if (DataService.data.articles[i].id > 211) {
           observer.next(DataService.data.articles[i]);
@@ -127,6 +130,7 @@ export class DataService {
   }
 
   getTags(): Observable<Tag[]> {
+    // tslint:disable-next-line:only-arrow-functions
     const f = function(observer){
       observer.next(DataService.data.tags);
       observer.complete();
@@ -169,10 +173,10 @@ export class DataService {
   }
 
   InsertFrontHit() {
-    const postData = new FormData();
-    postData.append('front', 'hit');
+    // const postData = new FormData();
+    // postData.append('front', 'hit');
 
-    this.http.post(this.ROOT_URL + 'addFrontVisit.php', postData).subscribe();
+    this.http.post(this.ROOT_URL + 'addFrontVisit.php', {front: 'hit'}).subscribe();
   }
 
 //    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();

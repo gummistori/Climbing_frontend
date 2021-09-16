@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { ArticleDetails } from '../Models/articleDetails';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -22,7 +23,7 @@ export class ArticlesComponent implements OnInit {
   tags: Tag[] = null;
   cssCollapse = 'collapse';
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
+  constructor(private route: ActivatedRoute, private data: DataService, private title: Title) {
     this.route.params.subscribe( params => console.log(params) );
    }
 
@@ -110,11 +111,13 @@ export class ArticlesComponent implements OnInit {
       return;
     }
 */
+    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.allArticles.length; i++) {
       if (this.allArticles[i].tags === null || this.allArticles[i].tags.length === 0) {
         continue;
       }
 
+      // tslint:disable-next-line:prefer-for-of
       for (let t = 0; t < this.allArticles[i].tags.length; t++) {
         if (tags[this.allArticles[i].tags[t]]) {
           if (query !== '') {
@@ -138,12 +141,15 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.title.setTitle('Greinar - Fjallateymið');
+
     this.data.getArticles().subscribe(data => {
       this.allArticles = data;
       this.filter();
     });
 
     this.data.getTags().subscribe(data => {
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < data.length; i++) {
         data[i].checked = false;
       }
