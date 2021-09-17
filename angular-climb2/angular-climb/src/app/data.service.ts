@@ -30,7 +30,7 @@ interface SearchResults {
 @Injectable()
 export class DataService {
   private static data: AllData = null;
-  public readonly ROOT_URL = 'https://www.climbing.is/';
+  public readonly ROOT_URL = 'https://data.climbing.is/';
   private jobs: any[] = [];
 
   constructor(@Inject(HttpClient) private http: HttpClient) {
@@ -176,7 +176,7 @@ export class DataService {
     // const postData = new FormData();
     // postData.append('front', 'hit');
 
-    this.http.post(this.ROOT_URL + 'addFrontVisit.php', {front: 'hit'}).subscribe();
+    this.http.get(this.ROOT_URL + 'addFrontVisit.php').subscribe();
   }
 
 //    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();
@@ -196,5 +196,6 @@ export class DataService {
         }
     );
     */
+
   }
 

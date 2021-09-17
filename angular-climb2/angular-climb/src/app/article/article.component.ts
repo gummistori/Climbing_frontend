@@ -46,7 +46,7 @@ export class ArticleComponent implements OnInit {
 
           this.articleDetails = data;
           this.title.setTitle(data.title + ' - Fjallateymið');
-          this.image = 'https://www.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
+          this.image = 'https://data.climbing.is/headPic.php/' + getRandomImage(data.myndasida);
 
           this.isn93X = data.x;
           this.isn93Y = data.y;

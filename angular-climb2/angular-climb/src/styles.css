@@ -325,7 +325,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-main-image {
-  height: 390px;
+  min-height: 110px;
 }
 .article-img-left {
   float: left;

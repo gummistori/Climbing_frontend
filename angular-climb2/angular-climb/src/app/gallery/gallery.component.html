@@ -9,7 +9,7 @@
     <div id ="lightgallery">
       <div class="col-lg-4 col-md-4 col-xs-6 thumb vignette-xsmall" *ngFor="let image of art?.myndasida; let i = index">
         <a class="thumbnail" style="cursor: pointer" title="{{image.description}}" routerLink="/ImageFull/{{id}}/{{i}}">
-          <img class="img-responsive" src="https://www.climbing.is/squarethumb.php/{{image.file}}" alt="{{image.description}}">
+          <img class="img-responsive" src="https://data.climbing.is/squarethumb.php/{{image.file}}" alt="{{image.description}}">
         </a>
       </div>
     </div>
