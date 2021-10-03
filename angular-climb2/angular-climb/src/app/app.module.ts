@@ -20,6 +20,9 @@ import { ArticlesRandomImageComponent } from './articles.random.image/articles.r
 import { SearchComponent } from './search/search.component';
 import { GalleryImageComponent } from './gallery.image/gallery.image.component';
 import { ArticleVideoComponent } from './article.video/article.video.component';
+import { ClimbingsearchComponent } from './climbingsearch/climbingsearch.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -37,13 +40,16 @@ import { ArticleVideoComponent } from './article.video/article.video.component';
     SearchComponent,
     GalleryImageComponent,
     ArticleVideoComponent,
-    SafePipe
+    SafePipe,
+    ClimbingsearchComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

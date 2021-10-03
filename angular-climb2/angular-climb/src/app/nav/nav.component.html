@@ -49,9 +49,10 @@
             <li [routerLinkActive]="['active']"><a (click)="hide()" routerLink="/About">Um okkur</a></li>
             <!--<li><a href="#">xMap</a></li>-->
             <li [routerLinkActive]="['active']">
-                <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <!-- <form #f="ngForm" (ngSubmit)="onSubmit()">
                     <input [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}" id="searchString" style="margin-left: 15px; background: none; border-radius: 10px; border-color: rgb(90,90,90); margin-top: 13px;" type="text" placeholder="Leitarorð..." />
-                </form>
+                </form> -->
+                <a (click)="hide()" routerLink="/NewSearch">Leit</a>
             </li>
             
             </ul>

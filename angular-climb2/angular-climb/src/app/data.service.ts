@@ -6,11 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { Observable ,  of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
-import { ArticleDetails } from './Models/articleDetails';
+import { SearchData, Searchresult } from './Models/searchresult';
+import { ArticleDetails, ArticleDetailsSearch } from './Models/articleDetails';
 import { FunctionCall } from '@angular/compiler';
+import { Article } from './Models/article';
 // import { basename } from 'path';
 
+const searchUrl = "/climbingSearch/search/search?search=";
+// const searchUrl = "https://localhost:44341/Search/Search?Search=";
 export interface Tag {
   id: number;
   name: string;
@@ -53,8 +56,8 @@ export class DataService {
         for (let i = 0; i < this.jobs.length && true; i++) {
           this.jobs[i].f.call(this, this.jobs[i].a);
         }
-      });
-   }
+    });
+  }
 
   getArticles(): Observable<ArticleDetails[]> {
     // tslint:disable-next-line:only-arrow-functions
@@ -179,23 +182,34 @@ export class DataService {
     this.http.get(this.ROOT_URL + 'addFrontVisit.php').subscribe();
   }
 
-//    this.http.post(this.ROOT_URL + 'addHit.php', {artId: articleId}).pipe();
-/*    this.http.post<any>(this.ROOT_URL + 'addHit.php',
-    {
-        'artId': 44
-    })
-    .subscribe(
-        val => {
-            console.log('PUT call successful value returned in body', val);
-        },
-        response => {
-            console.log('PUT call in error', response);
-        },
-        () => {
-            console.log('The PUT observable is now completed.');
-        }
-    );
-    */
-
+  Search(str: string) {
+    return this.http.get<SearchData>(searchUrl + str);
   }
+
+  GetArticleByIdList (searchRes: Searchresult[]): ArticleDetailsSearch[] {
+    
+    let res: ArticleDetailsSearch[] = [];
+
+    DataService.data.articles.forEach(element => {
+      for (let i = 0; i < searchRes.length; i++) {
+        if (element.id === searchRes[i].id && searchRes[i].score <= 5) {
+          let el: ArticleDetailsSearch = { score: searchRes[i].score, id: element.id, 
+            title: element.title, titleEng: element.titleEng, writer: element.writer,
+            allurtexti: element.allurtexti, allurtextiEng: element.allurtextiEng,
+            frettaritari: element.frettaritari, dagsetning: element.dagsetning,
+            videoEmbed: element.videoEmbed, videoLink: element.videoLink,
+            flightTrack: element.flightTrack, x: element.x, y: element.y,
+            lat: element.lat, lon: element.lon, myndasida: element.myndasida,
+            tags: element.tags };
+          res.push(el);
+        }
+      }
+    });
+
+    res.sort((a, b) => { return (a.score > b.score) ? 1 : -1; });
+
+    return res;
+  }
+
+}
 

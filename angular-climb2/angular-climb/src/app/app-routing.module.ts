@@ -6,6 +6,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { GalleryImageComponent } from './gallery.image/gallery.image.component';
+import { ClimbingsearchComponent } from './climbingsearch/climbingsearch.component';
 
 
 const routes: Routes = [{ path: '', component: FrontComponent}
@@ -14,6 +15,7 @@ const routes: Routes = [{ path: '', component: FrontComponent}
 , { path: 'Articles', component: ArticlesComponent}
 , { path: 'About', component: AboutComponent}
 , { path: 'Search', component: SearchComponent}
+, { path: 'NewSearch', component: ClimbingsearchComponent}
 , { path: 'Search/:queryString', component: SearchComponent}
 , { path: 'ImageFull/:id/:image', component: GalleryImageComponent}
 , { path: '**', component: FrontComponent} // change this to 404];
