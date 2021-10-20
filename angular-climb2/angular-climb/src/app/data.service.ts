@@ -1,19 +1,19 @@
 // import { DataService } from './data.service';
 import { Injectable, Inject } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable ,  of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { SearchData, Searchresult } from './Models/searchresult';
+import { Observable , of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { AutoCompleteResult, SearchData, Searchresult } from './Models/searchresult';
 import { ArticleDetails, ArticleDetailsSearch } from './Models/articleDetails';
-import { FunctionCall } from '@angular/compiler';
-import { Article } from './Models/article';
 // import { basename } from 'path';
 
-const searchUrl = "/climbingSearch/search/search?search=";
+const searchUrl = "https://c.climbing.is/climbingSearch/search/search?search=";
+const autoCompleteUrl = "https://c.climbing.is/climbingSearch/Search/Autocomplete?Search=";
+
 // const searchUrl = "https://localhost:44341/Search/Search?Search=";
+// const autoCompleteUrl = "https://localhost:44341/Search/Autocomplete?Search=";
 export interface Tag {
   id: number;
   name: string;
@@ -184,6 +184,10 @@ export class DataService {
 
   Search(str: string) {
     return this.http.get<SearchData>(searchUrl + str);
+  }
+
+  SearchAutocomplete(str: string): Observable<AutoCompleteResult[]> {
+    return this.http.get<AutoCompleteResult[]>(autoCompleteUrl + str);
   }
 
   GetArticleByIdList (searchRes: Searchresult[]): ArticleDetailsSearch[] {

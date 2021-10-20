@@ -105,14 +105,14 @@ body {
     text-transform: uppercase;
 }
 
-.fa {
+/* .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
+} */
 .grayline h4 .fa {
     margin-right: 20px;
     color: rgba(255,95,47,1);

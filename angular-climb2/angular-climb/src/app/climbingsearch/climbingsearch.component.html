@@ -1,13 +1,20 @@
 
 <div class="container">
   <span style="font-weight: bold; font-size: large;">Leit í greinasafni</span>
+  <mat-form-field>
     <input 
         [(ngModel)]="searchString" 
-        (change)="search()" 
-        placeholder="Leitarorð"
+        (keyup)="search($event)" 
+        aria-label="Leitarorð"
         style="margin-left: 15px; background: none; border-radius: 10px; margin-top: 13px;" 
         class="ng-pristine ng-valid ng-touched" />
-    <p style="margin-top: 15px;">Leitin fyrirgefur smá stafsetningavillur og leitar að líkum orðum til að gera leitina markvissari.</p>
+  </mat-form-field>
+  <div *ngIf="autoCompleteList" class="col-md-9">Ertu að leita af: 
+    <span style="cursor:pointer; background-color: #333; margin-right: 15px;" *ngFor="let i of autoCompleteList">
+      <a (click)="searchByClick(i)">{{i}}</a>
+    </span>
+  </div> <br />
+  <p style="margin-top: 15px;">Leitin fyrirgefur smá stafsetningavillur og leitar að líkum orðum til að gera leitina markvissari.</p>
 </div>
 
 <div class="container" *ngIf="results">
@@ -15,14 +22,14 @@
     <h3 *ngIf="resultArticles">{{ resultArticles.length }} Niðurstöður</h3>
     
     <div class="col-md-8 no-padd article-list">
-        <div id="greinalisti">
-            <div class="banner banner-subcont vignette-small" *ngFor="let post of resultArticles">
-              <a title="{{post.title}}" routerLink="/Articles/{{post.id}}/{{post.fyrirsognEng}}">
-                <app-articles-random-image [GalleryItems]="post?.myndasida"> </app-articles-random-image>
-                <h4><span>{{ post.title }}</span><em> Skrifað {{ post.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h4>
-              </a>
-            </div>
-        </div> 
-      </div>
+      <div id="greinalisti" *ngIf="resultArticles">
+        <div class="banner banner-subcont vignette-small" *ngFor="let post of resultArticles">
+          <a title="{{post.title}}" routerLink="/Articles/{{post.id}}/{{post.fyrirsognEng}}">
+            <app-articles-random-image [GalleryItems]="post?.myndasida"> </app-articles-random-image>
+            <h4><span>{{ post.title }}</span><em> Skrifað {{ post.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h4>
+          </a>
+        </div>
+    </div> 
+  </div>
 
 </div>

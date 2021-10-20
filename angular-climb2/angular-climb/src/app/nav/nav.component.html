@@ -33,28 +33,19 @@
         <div class="logo-cont"><a class="logo" routerLink="/"><img src="https://data.climbing.is/img/teymid_v2.png"/></a></div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" (click)="showHide()">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            
         </div>
         
         <div class="navbar-collapse main-nav" [class.collapse]="collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-            
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/" (click)="hide()">Heim</a></li>
-            <li [routerLinkActive]="['active']"><a routerLink="/Articles" (click)="hide()">Greinar</a></li>
-            <li [routerLinkActive]="['active']"><a (click)="hide()" routerLink="/About">Um okkur</a></li>
-            <!--<li><a href="#">xMap</a></li>-->
-            <li [routerLinkActive]="['active']">
-                <!-- <form #f="ngForm" (ngSubmit)="onSubmit()">
-                    <input [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}" id="searchString" style="margin-left: 15px; background: none; border-radius: 10px; border-color: rgb(90,90,90); margin-top: 13px;" type="text" placeholder="Leitarorð..." />
-                </form> -->
-                <a (click)="hide()" routerLink="/NewSearch">Leit</a>
-            </li>
-            
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/" (click)="hide()">Heim</a></li>
+                <li [routerLinkActive]="['active']"><a routerLink="/Articles" (click)="hide()">Greinar</a></li>
+                <li [routerLinkActive]="['active']"><a (click)="hide()" routerLink="/About">Um okkur</a></li>
+                <li [routerLinkActive]="['active']"><a (click)="hide()" routerLink="/NewSearch">Leit</a></li>
             </ul>
         </div>
     </div>

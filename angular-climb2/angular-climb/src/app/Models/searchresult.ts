@@ -7,3 +7,9 @@ export interface Searchresult {
 export interface SearchData {
     joinResult: Searchresult[];
 }
+
+export interface AutoCompleteResult {
+    score: number;
+    word: string;
+    importantCount: number;
+}
