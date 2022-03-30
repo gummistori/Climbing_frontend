@@ -8,8 +8,8 @@ Run in production by 'npm run build:ssr'
 
 
 
--ctrl-z
--bg
--ps
--disown xxx
+- ctrl-z
+- bg
+- ps
+- disown xxx
 
