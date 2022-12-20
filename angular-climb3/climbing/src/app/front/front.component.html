@@ -1,0 +1,24 @@
+<div class="container-fluid banner-cont">
+  <div class="container no-padd">
+    <div class="banner banner-subcont vignette" *ngFor="let post of articles | slice:0:1">
+      <a title="{{post.article.title}}" routerLink="/Articles/{{post.article.id}}">
+      <img src="https://data.climbing.is/listPic.php/{{post.image}}" class="article-head-image" style="box-sizing: unset;" width="100%"/>
+      <h2><span>{{ post.article.title }}</span><em class="banner-em">{{ post.article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h2>
+      </a>
+    </div>
+  </div>
+</div>
+  
+<div class="container banner-cont no-padd" style="margin-left: auto; margin-right: auto;">
+  <div class="row sidelines">
+
+    <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12 banner banner-subcont vignette-small forsida-subcont" *ngFor="let post of articles | slice:1:5; let i = index;" style="padding-left: 0px; padding-right: 0px;">
+      <a title="{{post.article.title}}" routerLink="Articles/{{post.article.id}}" >
+        <img src="https://data.climbing.is/listPic.php/{{post.image}}" class="article-head-image" width="100%"/>
+        <h4><span>{{ post.article.title }}</span><em>{{ post.article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</em></h4>
+      </a>
+    </div>
+
+  </div>
+</div>
+<app-banners></app-banners>

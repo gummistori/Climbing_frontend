@@ -1,0 +1,11 @@
+.map-button {
+    width: 100px !important;
+    height: 22px; 
+    background-color:rgba(0, 0, 0, 0.2); 
+    border: 1px solid; 
+    cursor: pointer; 
+    position: absolute; 
+    z-index: 9999; 
+    text-align:center;
+    font: 400 14px/20px Roboto,"Helvetica Neue",sans-serif;
+  }
