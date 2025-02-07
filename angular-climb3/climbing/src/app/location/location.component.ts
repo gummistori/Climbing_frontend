@@ -53,7 +53,7 @@ export class LocationComponent implements AfterViewInit, OnDestroy {
     if (!document.getElementById('SiteWatchLibrary')) {
       // console.log('SiteWatchLibrary not found');
       const script = document.createElement('script');
-      script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2'; // &Compress=False';
+      script.src = 'https://kort.samsyn.is/api/SiteWatch.aspx?key=Klinfyure45&v=2';
       script.id = 'SiteWatchLibrary';
       const me = this;
       // tslint:disable-next-line:only-arrow-functions

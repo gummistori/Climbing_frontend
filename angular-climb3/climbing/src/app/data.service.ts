@@ -44,7 +44,7 @@ export class DataService {
       return;
     }
 */
-    this.http.get<AllData>(this.ROOT_URL + 'getAll.php')
+    this.http.post<AllData>(this.ROOT_URL + 'getAll.php', {})
       .subscribe(data => {
   //      window.localStorage.setItem('data', JSON.stringify(data));
         DataService.data = data;
