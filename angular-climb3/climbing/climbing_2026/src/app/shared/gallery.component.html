@@ -1,0 +1,15 @@
+@if (article.myndasida.length > 0) {
+  <section class="section-heading">
+    <div class="container">
+      <h2>Myndir</h2>
+    </div>
+  </section>
+
+  <section class="container gallery-grid" aria-label="Myndir úr grein">
+    @for (image of article.myndasida; track image.file; let i = $index) {
+      <a [routerLink]="['/ImageFull', article.id, i]" [title]="image.description || article.title">
+        <img [src]="thumbUrl(image)" [alt]="image.description || article.title" loading="lazy">
+      </a>
+    }
+  </section>
+}

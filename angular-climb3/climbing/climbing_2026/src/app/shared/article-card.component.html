@@ -1,0 +1,12 @@
+<a class="article-card" [class.article-card-compact]="compact" [routerLink]="articleLink(article)">
+  <img [src]="imageUrl(article)" [alt]="article.title" loading="lazy">
+  <span class="article-card-overlay">
+    <strong>{{ article.title }}</strong>
+    <small>
+      {{ article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}
+      @if (score(article) !== null) {
+        <span>Stig {{ score(article) }}</span>
+      }
+    </small>
+  </span>
+</a>

@@ -1,0 +1,42 @@
+@if (article(); as article) {
+  <section class="hero article-hero">
+    <img [src]="heroImage()" [alt]="article.title" fetchpriority="high">
+    <div class="hero-title">
+      <strong>{{ article.title }}</strong>
+      <small>Skrifað {{ article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</small>
+    </div>
+  </section>
+
+  <section class="container article-layout">
+    <article [class]="textClass()">
+      <div class="article-tags">
+        @for (tag of article.tags; track tag) {
+          @if (tagName(tag)) {
+            <span>{{ tagName(tag) }}</span>
+          }
+        }
+      </div>
+
+      <button type="button" class="copy-toggle" (click)="toggleTextColor()" title="Breyta lit á texta" aria-label="Breyta lit á texta">
+        Aa
+      </button>
+
+      <div [innerHTML]="article.allurtexti"></div>
+    </article>
+
+    <aside class="article-sidebar">
+      <h2>Staðsetning</h2>
+      <app-article-map [article]="article" />
+    </aside>
+  </section>
+
+  @if (article.videoLink) {
+    <app-article-video [article]="article" />
+  }
+
+  <app-gallery [article]="article" />
+} @else {
+  <section class="container empty-state">
+    <h1>Grein fannst ekki</h1>
+  </section>
+}

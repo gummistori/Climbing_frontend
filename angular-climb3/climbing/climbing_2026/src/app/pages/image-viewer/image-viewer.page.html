@@ -1,0 +1,21 @@
+@if (article(); as article) {
+  <section class="image-viewer">
+    <button type="button" class="viewer-close" (click)="back()" aria-label="Til baka">×</button>
+    <button type="button" class="viewer-nav viewer-prev" (click)="previous()" aria-label="Fyrri mynd">‹</button>
+    <figure>
+      <img [src]="imageUrl()" [alt]="image()?.description || article.title" (click)="requestFullscreen()">
+      <figcaption>
+        <strong>{{ article.title }}</strong>
+        @if (image()?.description) {
+          <span>{{ image()?.description }}</span>
+        }
+        <small>{{ currentIndex() + 1 }} / {{ article.myndasida.length }}</small>
+      </figcaption>
+    </figure>
+    <button type="button" class="viewer-nav viewer-next" (click)="next()" aria-label="Næsta mynd">›</button>
+  </section>
+} @else {
+  <section class="container empty-state">
+    <h1>Mynd fannst ekki</h1>
+  </section>
+}

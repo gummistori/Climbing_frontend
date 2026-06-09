@@ -1,0 +1,38 @@
+<section class="container page-grid">
+  <aside class="filter-panel" aria-label="Sía greinar">
+    <div class="filter-header">
+      <h1>Greinar</h1>
+      <button type="button" class="text-button" (click)="clearFilters()">Hreinsa</button>
+    </div>
+
+    <label class="field-label" for="article-filter">Leita í lista</label>
+    <input
+      id="article-filter"
+      class="text-input"
+      type="search"
+      [value]="query()"
+      (input)="setQuery($any($event.target).value)"
+      autocomplete="off"
+    >
+
+    <div class="tag-list">
+      @for (tag of tags(); track tag.id) {
+        <label class="tag-check">
+          <input
+            type="checkbox"
+            [checked]="isSelected(tag.id)"
+            (change)="toggleTag(tag.id, $any($event.target).checked)"
+          >
+          <span>{{ tag.name }}</span>
+        </label>
+      }
+    </div>
+  </aside>
+
+  <section class="article-list" aria-live="polite">
+    <p class="result-count">{{ filteredArticles().length }} greinar</p>
+    @for (article of filteredArticles(); track article.id) {
+      <app-article-card [article]="article" [compact]="true" />
+    }
+  </section>
+</section>

@@ -1,0 +1,47 @@
+<section class="container search-page">
+  <form class="search-form" (ngSubmit)="runSearch()">
+    <label for="archive-search">Leit í greinasafni</label>
+    <div class="search-row">
+      <input
+        id="archive-search"
+        name="archive-search"
+        class="text-input"
+        type="search"
+        [ngModel]="searchString()"
+        (ngModelChange)="updateSearch($event)"
+        autocomplete="off"
+      >
+      <button type="submit" class="primary-button">Leita</button>
+    </div>
+  </form>
+
+  @if (suggestions().length > 0) {
+    <div class="suggestions" aria-label="Uppástungur">
+      <span>Uppástungur</span>
+      @for (suggestion of suggestions(); track suggestion) {
+        <button type="button" (click)="searchSuggestion(suggestion)">{{ suggestion }}</button>
+      }
+    </div>
+  }
+
+  <p class="muted">Leitin fyrirgefur smá stafsetningavillur og leitar að líkum orðum til að gera leitina markvissari.</p>
+
+  @if (error(); as message) {
+    <p class="error-message">{{ message }}</p>
+  }
+
+  @if (loading()) {
+    <p class="empty-state">Leita...</p>
+  }
+
+  @if (results()) {
+    <section class="search-results">
+      <h1>Niðurstöður ({{ resultArticles().length }})</h1>
+      <div class="article-list">
+        @for (article of resultArticles(); track article.id) {
+          <app-article-card [article]="article" [compact]="true" />
+        }
+      </div>
+    </section>
+  }
+</section>

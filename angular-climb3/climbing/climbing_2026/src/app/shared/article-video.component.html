@@ -1,0 +1,17 @@
+@if (videoUrl(); as url) {
+  <section class="section-heading">
+    <div class="container">
+      <h2>Video</h2>
+    </div>
+  </section>
+
+  <section class="container video-embed">
+    <iframe
+      [src]="url"
+      title="Myndband úr grein"
+      loading="lazy"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </section>
+}

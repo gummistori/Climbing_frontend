@@ -1,0 +1,13 @@
+<section class="container location-page">
+  <header class="page-header">
+    <h1>Staðsetning</h1>
+    <button type="button" class="secondary-button" (click)="toggleMapType()">Kortategund</button>
+  </header>
+
+  <div class="location-map-shell">
+    <div id="live-location-map" class="live-map" aria-label="Núverandi staðsetning Fjallateymis"></div>
+    @if (!mapReady()) {
+      <p class="map-status">{{ status() }}</p>
+    }
+  </div>
+</section>

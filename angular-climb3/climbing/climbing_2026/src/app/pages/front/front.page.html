@@ -1,0 +1,28 @@
+@if (error(); as message) {
+  <section class="container empty-state">
+    <h1>Ekki tókst að sækja greinar</h1>
+    <p>{{ message }}</p>
+  </section>
+} @else if (leadArticle(); as article) {
+  <section class="hero">
+    <a [routerLink]="['/Articles', article.id]" class="hero-link">
+      <img [src]="leadImage(article)" [alt]="article.title" fetchpriority="high">
+      <span class="hero-title">
+        <strong>{{ article.title }}</strong>
+        <small>{{ article.dagsetning | epochDate | date: 'yyyy-MM-dd' }}</small>
+      </span>
+    </a>
+  </section>
+
+  <section class="container front-grid" aria-label="Nýlegar greinar">
+    @for (post of secondaryArticles(); track post.id) {
+      <app-article-card [article]="post" />
+    }
+  </section>
+} @else {
+  <section class="container empty-state">
+    <h1>Sæki greinar</h1>
+  </section>
+}
+
+<!-- <app-banners /> -->
